@@ -6,7 +6,7 @@ import {
     watchLoginUserSaga, watchGetAuthUserSaga,
     watchForgotPasswordSaga, watchResetPasswordSaga, watchLogoutUserSaga
 } from '../components/login';
-import { watchCreateProfileSaga } from '../components/profile';
+import { watchCreateProfileSaga, watchVerifyBvnSaga } from '../components/profile';
 import { watchGetGetUserOrdersSaga } from '../components/dashboard';
 import { watchGetPropertySaga, watchCreateOrderSaga } from '../components/properties';
 
@@ -24,5 +24,6 @@ export default function* rootSaga() {
         call(watchForgotPasswordSaga),
         call(watchResetPasswordSaga),
         call(watchLogoutUserSaga),
+        call(watchVerifyBvnSaga),
     ]);
 }

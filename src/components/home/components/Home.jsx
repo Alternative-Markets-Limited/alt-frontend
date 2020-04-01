@@ -4,10 +4,14 @@ import { Hero } from './Hero';
 import { HowItWorks } from './HowItWorks';
 import { WhyAlts } from './WhyAlts';
 import { SubHeader, Footer } from '../../layouts/components';
-import { PropertyCard } from '../../common/components';
+import { PropertyCard, Spinner } from '../../common/components';
 
 export const Home = () => {
     const { properties } = useSelector(state => state.home);
+
+    if (!properties) {
+        return <Spinner />;
+    }
 
     if (!properties.length) {
         return <h3 className="text-center text-base md:text-xl text-black font-semibold">There are no properties available at the moment</h3>;
