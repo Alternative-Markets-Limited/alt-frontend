@@ -17,6 +17,8 @@
     }
   },
   "rules": {
+    "linebreak-style": 0,
+    "eslint linebreak-style": [0, "error", "windows"],
     "semi": ["error", "always"],
     "comma-dangle": [
       "error",
@@ -107,7 +109,7 @@
         "code": 150
       }
     ],
-    "max-lines-per-function": ["error", 100],
+    "max-lines-per-function": ["error", 200],
     "sort-keys": ["error", "asc"],
     "react/no-danger": "error",
     "react/jsx-pascal-case": "error",

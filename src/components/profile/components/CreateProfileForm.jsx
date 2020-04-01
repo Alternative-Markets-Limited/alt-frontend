@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import {
     Form, Input, Button, Upload, DatePicker
@@ -7,59 +8,17 @@ import { UploadOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { formRules } from '../../common/formRules';
-import { createProfile } from '../actions';
+import { createProfile, verifyBvn } from '../actions';
 
 const {
     dobRules, phoneRules, bvnRules, addressRules,
 } = formRules;
 const { Item } = Form;
 
-const formItems = [
-    {
-        feedback: false,
-        key: 1,
-        label: 'Phone Number:',
-        name: 'phone',
-        placeholder: '08012345678',
-        required: true,
-        rules: phoneRules,
-        status: '',
-    },
-    {
-        feedback: false,
-        key: 2,
-        label: 'Home Address:',
-        name: 'address',
-        placeholder: 'House Number, Street Name, Region',
-        required: true,
-        rules: addressRules,
-        status: '',
-    },
-    {
-        feedback: false,
-        key: 3,
-        label: 'Bank Verification Number:',
-        name: 'bvn',
-        placeholder: '2244224422',
-        required: true,
-        rules: bvnRules,
-        status: '',
-    },
-    {
-        feedback: false,
-        key: 4,
-        label: 'Occupation:',
-        name: 'occupation',
-        placeholder: 'Investment Banker',
-        required: false,
-        rules: [],
-        status: '',
-    },
-];
-
 export const CreateProfileForm = withRouter(({ history }) => {
     const dispatch = useDispatch();
     const { token } = useSelector(state => state.auth);
+    const { bvn: { loading, error, success } } = useSelector(state => state.profile);
     const [form] = Form.useForm();
 
     const onFinish = ({
@@ -71,8 +30,13 @@ export const CreateProfileForm = withRouter(({ history }) => {
         values.set('address', address);
         values.set('bvn', bvn);
         values.set('occupation', occupation);
-        values.append('avatar', avatar[0].originFileObj);
-        dispatch(createProfile({ history, token, values }));
+        if (avatar) {
+            values.append('avatar', avatar[0].originFileObj);
+        }
+        if (error) {
+            return false;
+        }
+        return dispatch(createProfile({ history, token, values }));
     };
 
     const normFile = e => {
@@ -82,6 +46,72 @@ export const CreateProfileForm = withRouter(({ history }) => {
 
     const dateFormat = 'DD-MM-YYYY';
     const disabledDate = current => current && current > moment().subtract(17, 'years');
+
+    const handleOnBlur = () => {
+        if (form.getFieldError('bvn').length || !form.getFieldValue('birthday')) {
+            form.validateFields(['bvn', 'birthday']);
+            return false;
+        }
+        const birthday = form.getFieldValue('birthday').format('YYYY-MM-DD');
+        const bvn = form.getFieldValue('bvn');
+        return dispatch(verifyBvn({ birthday, bvn }));
+    };
+
+    const checkStatus = (isLoading, isError, isSuccess) => {
+        if (isLoading) {
+            return 'validating';
+        } if (isError) {
+            return 'error';
+        } if (isSuccess) {
+            return 'success';
+        }
+        return null;
+    };
+
+    const formItems = [
+        {
+            feedback: false,
+            key: 1,
+            label: 'Phone Number:',
+            name: 'phone',
+            placeholder: '08012345678',
+            required: true,
+            rules: phoneRules,
+            status: '',
+        },
+        {
+            feedback: false,
+            key: 2,
+            label: 'Home Address:',
+            name: 'address',
+            placeholder: 'House Number, Street Name, Region',
+            required: true,
+            rules: addressRules,
+            status: '',
+        },
+        {
+            feedback: true,
+            help: error,
+            key: 3,
+            label: 'Bank Verification Number:',
+            name: 'bvn',
+            onBlur: handleOnBlur,
+            placeholder: '2244224422',
+            required: true,
+            rules: bvnRules,
+            status: checkStatus(loading, error, success),
+        },
+        {
+            feedback: false,
+            key: 4,
+            label: 'Occupation:',
+            name: 'occupation',
+            placeholder: 'Investment Banker',
+            required: false,
+            rules: [],
+            status: '',
+        },
+    ];
 
     return (
         <Form name="createProfile" layout="vertical" form={form} onFinish={onFinish}>
@@ -103,7 +133,7 @@ export const CreateProfileForm = withRouter(({ history }) => {
                 />
             </Item>
             {formItems.map(({
-                key, name, label, placeholder, required, rules, status, feedback,
+                key, name, label, placeholder, required, rules, status, feedback, onBlur, help,
             }) => (
                 <Item
                     key={key}
@@ -114,8 +144,9 @@ export const CreateProfileForm = withRouter(({ history }) => {
                     rules={rules}
                     validateStatus={status}
                     hasFeedback={feedback}
+                    help={help}
                 >
-                    <Input className="input-form" placeholder={placeholder} />
+                    <Input className="input-form" placeholder={placeholder} onBlur={onBlur} />
                 </Item>
             ))}
             <Item>
