@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="1080" viewBox="0 0 1600 1080">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#4b1a7a"/>
+      <stop offset="1" stop-color="#270064"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d4579d"/>
+      <stop offset="1" stop-color="#270064" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#823fba"/>
+      <stop offset="1" stop-color="#55208f"/>
+    </linearGradient>
+    <filter id="Rectangle_60" x="417" y="641" width="729" height="245" filterUnits="userSpaceOnUse">
+      <feOffset dy="20" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="25" result="blur"/>
+      <feFlood flood-color="#6b2fa5" flood-opacity="0.31"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-Login_">
+      <rect width="1600" height="1080"/>
+    </clipPath>
+  </defs>
+  <g id="Login_" data-name="Login " clip-path="url(#clip-Login_)">
+    <rect width="1600" height="1080" fill="#fff"/>
+    <rect id="Rectangle_56" data-name="Rectangle 56" width="1600" height="1080" fill="url(#linear-gradient)"/>
+    <g id="Group_582" data-name="Group 582" transform="translate(0 -11)">
+      <path id="wave-4" d="M1600,192l-53.333,35.6c-53.333,35.067-160,107.067-266.667,92.4S1066.667,206.667,960,184.933C853.333,164,746.667,220,640,248.933c-106.667,28.4-213.333,28.4-320-7.2C213.333,206.667,106.667,134.667,53.333,99.6L0,64V405.333H1600Z" transform="translate(0 172)" opacity="0.35" fill="url(#linear-gradient-2)"/>
+      <path id="wave-4-2" data-name="wave-4" d="M0,192l53.333,35.6c53.333,35.067,160,107.067,266.667,92.4S533.333,206.667,640,184.933C746.667,164,853.333,220,960,248.933c106.667,28.4,213.333,28.4,320-7.2,106.667-35.067,213.333-107.067,266.667-142.133L1600,64V405.333H0Z" transform="translate(0 554)" opacity="0.32" fill="url(#linear-gradient-2)"/>
+    </g>
+    <rect id="Rectangle_57" data-name="Rectangle 57" width="724" height="816" rx="20" transform="translate(419 132)" fill="#fff"/>
+    <g id="Group_581" data-name="Group 581" transform="translate(441 43)">
+      <g id="Group_429" data-name="Group 429" transform="translate(21)">
+        <g transform="matrix(1, 0, 0, 1, -462, -43)" filter="url(#Rectangle_60)">
+          <rect id="Rectangle_60-2" data-name="Rectangle 60" width="579" height="95" rx="10" transform="translate(492 696)" fill="url(#linear-gradient-4)"/>
+        </g>
+        <text id="Username" transform="translate(30 291)" fill="#848484" font-size="20" font-family="TTCommons-Medium, TT Commons" font-weight="500" letter-spacing="0.05em"><tspan x="0" y="0">Username</tspan></text>
+        <text id="Lupa_Password" data-name="Lupa Password" transform="translate(443.5 620.682)" fill="#994fd0" font-size="20" font-family="TTCommons-Bold, TT Commons" font-weight="700" letter-spacing="0.02em"><tspan x="0" y="0">Lupa Password</tspan></text>
+        <text id="Don_t_have_an_account_Sign_Up" data-name="Don&apos;t have an account? Sign Up" transform="translate(45.5 807)" fill="#461b65" font-size="20" font-family="TTCommons-Bold, TT Commons" font-weight="700" letter-spacing="0.02em"><tspan x="0" y="0">Don&apos;t have an account?</tspan><tspan y="0" xml:space="preserve" fill="#994fd0"> Sign Up</tspan></text>
+        <g id="Group_426" data-name="Group 426">
+          <g id="Rectangle_58" data-name="Rectangle 58" transform="translate(30 319)" fill="#fbfbfb" stroke="rgba(227,227,227,0.3)" stroke-width="2">
+            <rect width="579" height="95" rx="10" stroke="none"/>
+            <rect x="1" y="1" width="577" height="93" rx="9" fill="none"/>
+          </g>
+          <text id="Your_Name" data-name="Your Name" transform="translate(60 371)" fill="#b7b7b7" font-size="20" font-family="TTCommons-Italic, TT Commons" font-style="italic" letter-spacing="0.05em"><tspan x="0" y="0">Your Name</tspan></text>
+        </g>
+        <g id="Group_428" data-name="Group 428">
+          <g id="Group_427" data-name="Group 427" transform="translate(0 -6)">
+            <g id="Rectangle_59" data-name="Rectangle 59" transform="translate(30 484)" fill="#fbfbfb" stroke="rgba(227,227,227,0.3)" stroke-width="2">
+              <rect width="579" height="95" rx="10" stroke="none"/>
+              <rect x="1" y="1" width="577" height="93" rx="9" fill="none"/>
+            </g>
+            <text id="_" data-name="********" transform="translate(60 536)" fill="#b7b7b7" font-size="20" font-family="TTCommons-Italic, TT Commons" font-style="italic" letter-spacing="0.05em"><tspan x="0" y="0">********</tspan></text>
+          </g>
+          <text id="Password" transform="translate(30 450)" fill="#848484" font-size="20" font-family="TTCommons-Regular, TT Commons"><tspan x="0" y="0">Password</tspan></text>
+        </g>
+        <g id="Group_413" data-name="Group 413" transform="translate(-124.5 -15)">
+          <line id="Line_85" data-name="Line 85" x2="21" transform="translate(711.5 631.5)" fill="none" stroke="#994fd0" stroke-linecap="round" stroke-width="2"/>
+          <line id="Line_86" data-name="Line 86" x2="6" y2="6" transform="translate(727.5 625.5)" fill="none" stroke="#994fd0" stroke-linecap="round" stroke-width="2"/>
+          <line id="Line_87" data-name="Line 87" y1="6" x2="6" transform="translate(727.5 631.5)" fill="none" stroke="#994fd0" stroke-linecap="round" stroke-width="2"/>
+        </g>
+        <g id="Group_425" data-name="Group 425" transform="translate(-247 -14)">
+          <text id="Enter_the_space" data-name="Enter the space" fill="#fff" stroke="#fdbc5a" transform="translate(356 236)" stroke-width="1" font-size="53" font-family="TTCommons-Bold, TT Commons" font-weight="700" letter-spacing="0.02em"><tspan x="0" y="0">Enter the </tspan><tspan y="0" fill="none">space</tspan></text>
+          <text id="Enter_the_space-2" data-name="Enter the space" transform="translate(352 232)" fill="#55208f" font-size="53" font-family="TTCommons-Bold, TT Commons" font-weight="700" letter-spacing="0.02em"><tspan x="0" y="0">Enter the</tspan><tspan y="0" fill="#fff"> </tspan><tspan y="0" fill="#fdbc5a">space</tspan></text>
+        </g>
+        <line id="Line_88" data-name="Line 88" x2="60" transform="translate(30 208)" fill="none" stroke="#fdbc5a" stroke-width="4"/>
+      </g>
+      <text id="Login" transform="translate(288 705)" fill="#fff" font-size="25" font-family="TTCommons-Bold, TT Commons" font-weight="700" letter-spacing="0.05em"><tspan x="0" y="0">Login</tspan></text>
+    </g>
+    <path id="path1482" d="M27.377-160.483c-.323-2.755-2.07-5.09-5.089-5.09s-4.766,2.335-5.089,5.09l-.219,1.868c-.338,2.879,2.669,5.307,5.308,5.307s5.646-2.428,5.308-5.307l-.219-1.868" transform="translate(705.105 913.479)" fill="#f3dab3"/>
+    <path id="path14" d="M143.611-393.394l1.056,1.912A12.85,12.85,0,0,0,149.8-386.4l1.931,1.045L149.8-384.3a12.851,12.851,0,0,0-5.134,5.086l-1.056,1.912-1.056-1.912a12.856,12.856,0,0,0-5.136-5.086l-1.931-1.047,1.931-1.045a12.855,12.855,0,0,0,5.136-5.086l1.056-1.912" transform="translate(437.702 1406.76)" fill="#eee" opacity="0.83"/>
+    <path id="path14-2" data-name="path14" d="M143.611-393.394l1.056,1.912A12.85,12.85,0,0,0,149.8-386.4l1.931,1.045L149.8-384.3a12.851,12.851,0,0,0-5.134,5.086l-1.056,1.912-1.056-1.912a12.856,12.856,0,0,0-5.136-5.086l-1.931-1.047,1.931-1.045a12.855,12.855,0,0,0,5.136-5.086l1.056-1.912" transform="translate(1143.702 728.76)" fill="#eee" opacity="0.83"/>
+    <path id="path14-3" data-name="path14" d="M143.611-393.394l1.056,1.912A12.85,12.85,0,0,0,149.8-386.4l1.931,1.045L149.8-384.3a12.851,12.851,0,0,0-5.134,5.086l-1.056,1.912-1.056-1.912a12.856,12.856,0,0,0-5.136-5.086l-1.931-1.047,1.931-1.045a12.855,12.855,0,0,0,5.136-5.086l1.056-1.912" transform="translate(205.702 585.76)" fill="#eee" opacity="0.83"/>
+    <path id="path34" d="M680.154-413.764a14.292,14.292,0,0,1-20.064,2.431A14.288,14.288,0,0,1,657.66-431.4a14.288,14.288,0,0,1,20.064-2.431,14.291,14.291,0,0,1,2.429,20.064" transform="translate(643.813 411.589)" fill="#f8f8f9" opacity="0.09"/>
+  </g>
+</svg>

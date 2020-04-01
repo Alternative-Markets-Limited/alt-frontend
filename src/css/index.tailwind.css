@@ -1,0 +1,66 @@
+
+@import '~antd/dist/antd.css';
+
+@import 'tailwindcss/base';
+
+@import 'tailwindcss/components';
+
+/* antd overrides */
+
+.anticon{
+    vertical-align: middle;
+}
+
+.ant-checkbox-checked::after{
+    border: 1px solid #010E5E;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner{
+    background-color: #010E5E;
+    border-color: #010E5E;
+}
+
+/* custom css */
+.bg-image{
+    background-image: url('../assets/images/bg-image.jpg');
+}
+
+.input-form {
+    @apply appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight;
+}
+
+.btn-primary {
+    @apply h-full py-2 border-alt-blue rounded bg-alt-blue uppercase text-xs; 
+   
+}
+.btn-secondary {
+    @apply h-full py-2 border border-alt-blue rounded bg-white uppercase text-alt-blue text-xs text-center block; 
+   
+}
+.btn-secondary:hover {
+    @apply  bg-alt-blue text-white border-0; 
+   
+}
+.btn-primary:hover {
+    @apply border-alt-blue-darker bg-alt-blue-darker; 
+}
+.btn-primary:focus {
+    @apply  border-alt-blue-darker bg-alt-blue-darker;
+}
+
+.link {
+    @apply underline text-alt-blue cursor-pointer;
+}
+
+.label {
+    @apply text-xs text-black mb-2 block;
+}
+
+.g-justify-items-center{
+    justify-items: center;
+}
+
+img {
+    display: inline-block;
+}
+@import 'tailwindcss/utilities';
