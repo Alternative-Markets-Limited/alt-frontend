@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="1321" viewBox="0 0 1600 1321">
+  <defs>
+    <clipPath id="clip-Register">
+      <rect width="1600" height="1321"/>
+    </clipPath>
+  </defs>
+  <g id="Register" clip-path="url(#clip-Register)">
+    <rect width="1600" height="1321" fill="#fff"/>
+  </g>
+</svg>
