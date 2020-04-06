@@ -10,7 +10,7 @@ import store from './store';
 // eslint-disable-next-line no-undef
 ReactDOM.render(
     <Provider store={store}>
-        <Router basename={window.location.pathname || ''}>
+        <Router>
             <App />
         </Router>
     </Provider>,
