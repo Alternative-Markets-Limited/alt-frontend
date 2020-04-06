@@ -21,8 +21,7 @@ export const Assets = () => {
     if (!orders) {
         return <Spinner />;
     }
-
-    const propertiesArray = orders.map(({ property, id }) => ({ order_id: id, ...property }));
+    const propertiesArray = orders.map(({ property, id, fractions_qty }) => ({ fractions_qty, order_id: id, ...property }));
 
     if (!properties.length) {
         return <h3 className="text-center text-base md:text-xl text-black font-semibold">There are no properties available at the moment</h3>;
@@ -31,7 +30,7 @@ export const Assets = () => {
     return (
         <>
             <main>
-                <section>
+                <section className="pt-16">
                     <SecondaryHeader />
                     <MiniHeader name="My Assets" icon={faBox} />
                 </section>

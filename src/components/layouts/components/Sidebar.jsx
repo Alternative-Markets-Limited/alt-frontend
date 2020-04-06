@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { stack as Menu } from 'react-burger-menu';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReactComponent as MenuOpen } from '../../../assets/images/menu-open.svg';
 import { ReactComponent as MenuClose } from '../../../assets/images/menu-close.svg';
 import { AuthMenu } from '../../common/components';
 import { logoutUser } from '../../login/actions';
 
-export const Sidebar = withRouter(({ pageWrapId, outerContainerId, history }) => {
+export const Sidebar = ({ pageWrapId, outerContainerId }) => {
+    const history = useHistory();
     const dispatch = useDispatch();
     const {
         isAuthenticated, token,
@@ -37,11 +38,16 @@ export const Sidebar = withRouter(({ pageWrapId, outerContainerId, history }) =>
         },
         {
             key: 2,
+            name: 'Properties',
+            route: '/properties',
+        },
+        {
+            key: 3,
             name: 'Login',
             route: '/login',
         },
         {
-            key: 3,
+            key: 4,
             name: 'Register',
             route: '/register',
         },
@@ -76,18 +82,18 @@ export const Sidebar = withRouter(({ pageWrapId, outerContainerId, history }) =>
             right
         >
             {isAuthenticated ? (authMenu.map(({ key, name, route }) => (
-                <Link key={key} className="hover:underline" to={route} onClick={closeMenu}>
+                <NavLink key={key} className="hover:underline" activeClassName="underline" to={route} onClick={closeMenu}>
                     {name}
-                </Link>
+                </NavLink>
             ))) : (defaultMenu.map(({ key, name, route }) => (
-                <Link key={key} className="hover:underline" to={route} onClick={closeMenu}>
+                <NavLink key={key} className="hover:underline" activeClassName="underline" to={route} onClick={closeMenu}>
                     {name}
-                </Link>
+                </NavLink>
             )))}
             {isAuthenticated ? <button type="submit" className="hover:underline" onClick={onButtonClick}>Logout</button> : null }
         </Menu>
     );
-});
+};
 
 Sidebar.propTypes = {
     outerContainerId: PropTypes.string,

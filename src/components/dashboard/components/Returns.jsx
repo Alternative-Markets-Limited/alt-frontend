@@ -6,7 +6,7 @@ import { ButtonLink } from '../../common/components';
 export const Returns = () => (
     <>
         <main>
-            <section>
+            <section className="pt-16">
                 <SecondaryHeader />
                 <MiniHeader name="My Returns" icon={faWallet} />
             </section>

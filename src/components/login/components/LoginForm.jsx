@@ -4,7 +4,7 @@ import {
 } from 'antd';
 import { GlobalOutlined, LockOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { loginUser } from '../actions';
 import { TextLink } from '../../common/components';
 import { formRules, passwordRequired } from '../../common/formRules';
@@ -13,7 +13,9 @@ const { emailRules } = formRules;
 const { Item } = Form;
 const { Password } = Input;
 
-export const LoginForm = withRouter(({ history, location }) => {
+export const LoginForm = () => {
+    const history = useHistory();
+    const location = useLocation();
     const [form] = Form.useForm();
     const dispatch = useDispatch();
     const { from: { pathname } } = location.state || { from: { pathname: '/login' } };
@@ -39,4 +41,4 @@ export const LoginForm = withRouter(({ history, location }) => {
             </Item>
         </Form>
     );
-});
+};

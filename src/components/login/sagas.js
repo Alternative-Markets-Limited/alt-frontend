@@ -31,6 +31,7 @@ function* getAuthUserSaga({ payload }) {
         if (decodedToken.exp * 1000 < Date.now() || !decodedToken) {
             yield put(getAuthUserError('token expired'));
             alert.warning('Session Expired');
+            localStorage.removeItem('token');
         } else {
             const user = yield getUser(payload);
             yield put(getAuthUserSuccess(user));

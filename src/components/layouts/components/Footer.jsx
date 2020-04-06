@@ -15,7 +15,7 @@ const links = [
         { key: 4, name: 'Properties', route: '/properties' },
     ],
     [
-        { key: 1, name: 'Create Account', route: '/login' },
+        { key: 1, name: 'Create Account', route: '/register' },
         { key: 2, name: 'Sign In', route: '/login' },
         { key: 3, name: 'Affiliate Marketer Sign Up', route: '/login' },
         { key: 4, name: 'Trust Deed', route: '/login' },

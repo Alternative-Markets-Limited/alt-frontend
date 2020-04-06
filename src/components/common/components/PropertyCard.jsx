@@ -16,7 +16,7 @@ export const PropertyCard = ({ properties }) => {
     return (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 g-justify-items-center">
             { properties.map(({
-                category, investment_population, name, about, min_fraction_price, min_yield, max_yield, image, id, order_id,
+                category, investment_population, name, about, min_fraction_price, min_yield, max_yield, image, id, order_id, fractions_qty,
             }) => (
                 <div key={order_id || id} className="max-w-xs rounded-lg overflow-hidden shadow-lg border-t-4 border-alt-green">
                     <img className="w-full bg-gray-200" src={image} alt="contruction" loading="lazy" width="320" />
@@ -24,8 +24,8 @@ export const PropertyCard = ({ properties }) => {
                         <div className="flex flex-row items-center justify-between my-2">
                             <span className="block px-3 py-1 text-xs text-gray-600 bg-gray-100 rounded">{category.name}</span>
                             <p className="font-semibold text-sm text-black">
-                                {investment_population}
-                                <span className="text-xs text-gray-600 font-normal"> tokens available</span>
+                                {fractions_qty || investment_population}
+                                <span className="text-xs text-gray-600 font-normal"> tokens</span>
                             </p>
                         </div>
                         <Link to={`/properties/${id}`}>
@@ -60,6 +60,7 @@ PropertyCard.propTypes = {
     properties: PropTypes.arrayOf(PropTypes.shape({
         about: PropTypes.string.isRequired,
         category: PropTypes.shape().isRequired,
+        fractions_qty: PropTypes.number,
         id: PropTypes.number.isRequired,
         image: PropTypes.string.isRequired,
         investment_population: PropTypes.number.isRequired,

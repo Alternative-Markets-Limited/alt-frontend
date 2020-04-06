@@ -7,7 +7,7 @@ export const ForgotPassword = () => {
     const { loading } = useSelector(state => state.auth);
     return (
         <main className="bg-image h-screen w-auto bg-cover bg-no-repeat bg-top">
-            <div className="max-w-md mx-auto pt-20 px-2">
+            <div className="max-w-md mx-auto pt-40 px-2">
                 <div className="bg-white rounded-md p-6">
                     <MiniHeader text="Reset" span="Password" />
                     <div className={`${loading ? 'block' : 'hidden'}`}>

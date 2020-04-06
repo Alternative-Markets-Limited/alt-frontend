@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, Button } from 'antd';
 import { LockOutlined, GlobalOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { formRules } from '../../common/formRules';
 import { resetPassword } from '../actions';
 
@@ -12,8 +12,9 @@ const {
 const { Item } = Form;
 const { Password } = Input;
 
-export const ResetPasswordForm = withRouter(({ history, match }) => {
-    const { params: { token } } = match;
+export const ResetPasswordForm = () => {
+    const { token } = useParams();
+    const history = useHistory();
     const [form] = Form.useForm();
     const dispatch = useDispatch();
     const onFinish = values => dispatch(resetPassword({ history, token, values }));
@@ -33,5 +34,5 @@ export const ResetPasswordForm = withRouter(({ history, match }) => {
             </Item>
         </Form>
     );
-});
+};
 

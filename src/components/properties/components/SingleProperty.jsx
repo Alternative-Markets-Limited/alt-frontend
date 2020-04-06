@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { message } from 'antd';
 import { VerifyTransaction } from 'react-flutterwave-rave';
@@ -17,10 +17,11 @@ import {
 } from '../actions';
 import { OrderModal } from './OrderModal';
 
-export const SingleProperty = withRouter(({ match, history }) => {
+export const SingleProperty = () => {
     const [visible, setVisible] = useState(false);
     const dispatch = useDispatch();
-    const { params: { id } } = match;
+    const history = useHistory();
+    const { id } = useParams();
     const { token, user } = useSelector(state => state.auth);
     const { property } = useSelector(state => state.property);
     const [order, setOrder] = useState({ price: 0, quantity: 1 });
@@ -130,4 +131,4 @@ export const SingleProperty = withRouter(({ match, history }) => {
             <Footer />
         </>
     );
-});
+};

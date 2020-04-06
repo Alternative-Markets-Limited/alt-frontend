@@ -6,7 +6,7 @@ import {
 import moment from 'moment';
 import { UploadOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { formRules } from '../../common/formRules';
 import { createProfile, verifyBvn } from '../actions';
 
@@ -15,8 +15,9 @@ const {
 } = formRules;
 const { Item } = Form;
 
-export const CreateProfileForm = withRouter(({ history }) => {
+export const CreateProfileForm = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { token } = useSelector(state => state.auth);
     const { bvn: { loading, error, success } } = useSelector(state => state.profile);
     const [form] = Form.useForm();
@@ -154,4 +155,4 @@ export const CreateProfileForm = withRouter(({ history }) => {
             </Item>
         </Form>
     );
-});
+};

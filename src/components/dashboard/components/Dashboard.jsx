@@ -65,10 +65,10 @@ export const Dashboard = () => {
     return (
         <>
             <main>
-                <section>
+                <section className="pt-16">
                     <MiniHeader name="My Dashboard" icon={faUser} />
                 </section>
-                <section className="container px-2 my-8 ">
+                <section className="container px-2 my-32">
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 g-justify-items-center">
                         {stats.map(({
                             key, color, name, number, route, text, image,
