@@ -24,7 +24,7 @@ export const Hero = () => {
     return (
         <div className="flex flex-col items-center md:flex-row">
             <div className="container p-2 md:pl-10 xl:pl-32">
-                <div className="text-alt-blue font-bold text-2xl lg:text-4xl xl:text-5xl">
+                <div className="sm:pt-0 pt-24 text-alt-blue font-bold text-2xl lg:text-4xl xl:text-5xl">
                     <h3 className="text-alt-blue">Enjoy</h3>
                     <h3 className="text-alt-green">Low-Capital</h3>
                     <h3 className="text-alt-blue">Access to High-Yield</h3>

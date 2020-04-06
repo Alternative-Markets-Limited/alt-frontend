@@ -14,7 +14,7 @@ export const Properties = () => {
     return (
         <>
             <main>
-                <section>
+                <section className="pt-16">
                     <SecondaryHeader />
                     <MiniHeader name="Properties" icon={faBuilding} searchBar />
                 </section>

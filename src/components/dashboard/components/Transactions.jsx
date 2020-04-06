@@ -64,7 +64,7 @@ export const Transactions = () => {
     return (
         <>
             <main>
-                <section>
+                <section className="pt-16">
                     <SecondaryHeader />
                     <MiniHeader name="My Transactions" icon={faCreditCard} />
                 </section>

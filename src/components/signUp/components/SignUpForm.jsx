@@ -4,7 +4,7 @@ import {
     UserAddOutlined, UserOutlined, LockOutlined, GlobalOutlined
 } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { formRules } from '../../common/formRules';
 import { registerUser } from '../actions';
 
@@ -38,9 +38,10 @@ const formFields = [
     },
 ];
 
-export const SignUpForm = withRouter(({ history }) => {
+export const SignUpForm = () => {
     const [form] = Form.useForm();
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const onFinish = values => dispatch(registerUser({ history, values }));
 
@@ -61,5 +62,5 @@ export const SignUpForm = withRouter(({ history }) => {
             </Item>
         </Form>
     );
-});
+};
 

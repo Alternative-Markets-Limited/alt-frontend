@@ -1,13 +1,14 @@
 import React from 'react';
 import { Button, Form, Checkbox } from 'antd';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { formRules } from '../../common/formRules';
 
 const { agreementRules } = formRules;
 const { Item } = Form;
 
-export const AgreeementForm = withRouter(({ history }) => {
+export const AgreeementForm = () => {
     const [form] = Form.useForm();
+    const history = useHistory();
 
     const onFinish = () => history.push('create-profile');
 
@@ -23,4 +24,4 @@ export const AgreeementForm = withRouter(({ history }) => {
             </Item>
         </Form>
     );
-});
+};

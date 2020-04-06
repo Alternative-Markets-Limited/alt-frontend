@@ -20,7 +20,7 @@ export const Home = () => {
     return (
         <>
             <main>
-                <section>
+                <section className="pt-0 md:pt-10">
                     <Hero />
                 </section>
                 <section>
