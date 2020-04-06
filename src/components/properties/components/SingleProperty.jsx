@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { message } from 'antd';
-import { VerifyTransaction } from 'react-flutterwave-rave';
 import { Footer, SecondaryHeader } from '../../layouts/components';
 import { Spinner } from '../../common/components';
 import { Hero } from './Hero';
@@ -60,30 +59,15 @@ export const SingleProperty = () => {
         setOrder({ ...order, price: min_fraction_price * value, quantity: value });
     };
 
-    const callback = response => VerifyTransaction({ SECKEY: process.env.REACT_APP_FLUTTER_SECK, live: false, txref: response.tx.txRef })
-        .then(resp => {
-            const currency = 'NGN';
-            const { chargeResponse } = resp.data.data.flwMeta;
-            const chargeAmount = resp.data.data.amount;
-            const chargeCurrency = resp.data.data.transaction_currency;
-            if ((chargeResponse === '00' || chargeResponse === '0') && (chargeAmount === price) && (chargeCurrency === currency)) {
-                const newOrder = {
-                    fractions_qty: quantity,
-                    price,
-                    property_id: id,
-                };
-                dispatch(createOrder({ history, newOrder, token }));
-                history.push('/order-success');
-                // Give Value and return to Success page
-            } else {
-                dispatch(createOrderError(resp));
-                history.push('/order-error');
-                // Dont Give Value and return to Failure page
-            }
-        })
-        .catch(error => {
-            dispatch(createOrderError(error));
-        });
+    // TODO: Verify payment backend API
+    const callback = response => {
+        const newOrder = {
+            fractions_qty: quantity,
+            price,
+            property_id: id,
+        };
+        dispatch(createOrder({ history, newOrder, token }));
+    };
 
     const close = () => message.info('Payment Modal Closed');
 
