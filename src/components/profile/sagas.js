@@ -2,7 +2,7 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { message as alert } from 'antd';
 import alt from '../../apis/alt';
-import paystack from '../../apis/paystack';
+import bvn from '../../apis/bvn';
 import {
     createProfileError, createProfileSuccess, verifyBvnError, verifyBvnSuccess
 } from './actions';
@@ -21,7 +21,7 @@ function* createProfileSaga({ payload: { values, history, token } }) {
         alert.success(message);
         yield put(createProfileSuccess(data));
         yield put(getAuthUserSuccess(data));
-        history.push('/dashboard');
+        yield history.push('/dashboard');
     } catch (error) {
         const { data: { data, message } } = error.response;
         alert.error(message);
@@ -29,20 +29,16 @@ function* createProfileSaga({ payload: { values, history, token } }) {
     }
 }
 
-function* verifyBvnSaga({ payload: { bvn, birthday } }) {
+function* verifyBvnSaga({ payload }) {
     try {
-        const response = yield call(paystack.get, `bank/resolve_bvn/${bvn}`);
-        const { data: { formatted_dob } } = response.data;
-        if (formatted_dob !== birthday) {
-            alert.error('Your BVN does not match records');
-            yield put(verifyBvnError('BVN does not match record'));
-        } else {
-            yield put(verifyBvnSuccess(formatted_dob));
-        }
+        const response = yield call(bvn.post, '/sfx-verify/v2/bvn', payload);
+        console.log(response.data);
+        yield put(verifyBvnSuccess(response));
+        alert.success('BVN verified');
     } catch (error) {
-        const { message } = error.response.data;
-        alert.error(message);
-        yield put(verifyBvnError(message));
+        console.log(error.response.data);
+        yield put(verifyBvnError(error));
+        alert.error('Your BVN does not match records');
     }
 }
 

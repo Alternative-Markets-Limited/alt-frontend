@@ -49,6 +49,10 @@ export const formRules = {
             message: 'First name must be a valid string',
             type: 'string',
         },
+        {
+            message: 'First name format is invalid',
+            pattern: /^[a-zA-Z]+$/,
+        },
     ],
     lastnameRules: [
         {
@@ -62,6 +66,10 @@ export const formRules = {
         {
             message: 'Last name must be a valid string',
             type: 'string',
+        },
+        {
+            message: 'Last name format is invalid',
+            pattern: /^[a-zA-Z]+$/,
         },
     ],
     passwordRules: [
