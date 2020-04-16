@@ -15,6 +15,7 @@ export const GridGallery = ({ gallery }) => {
     for (let i = 0; i < imageList.length; i++) {
         imageList[i] = {
             height: randomDimension(2, 3),
+            key: i.toString(),
             src: gallery[i],
             width: randomDimension(3, 4),
         };

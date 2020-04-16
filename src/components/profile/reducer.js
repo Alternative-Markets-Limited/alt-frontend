@@ -5,7 +5,7 @@ const { VERIFIY_BVN, VERIFIY_BVN_ERROR, VERIFIY_BVN_SUCCESS } = BVN;
 
 const INITIAL_STATE = {
     bvn: {
-        error: false, formatted_dob: null, loading: false, success: false,
+        error: false, loading: false, verified: null,
     },
     error: false,
     loading: false,
@@ -25,12 +25,17 @@ export default (state = INITIAL_STATE, action) => {
     case VERIFIY_BVN:
         return { ...state, bvn: { loading: true } };
     case VERIFIY_BVN_SUCCESS:
-        return { ...state, bvn: { formatted_dob: action.payload, loading: false, success: true } };
+        return {
+            ...state,
+            bvn: {
+                error: false, loading: false, verified: true,
+            },
+        };
     case VERIFIY_BVN_ERROR:
         return {
             ...state,
             bvn: {
-                error: action.payload, formatted_dob: null, loading: false, success: false,
+                error: true, loading: false, verified: false,
             },
         };
     default:

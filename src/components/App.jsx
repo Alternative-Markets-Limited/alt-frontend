@@ -50,8 +50,11 @@ const App = () => {
         } else {
             dispatch(authState(false));
         }
+    }, [token, dispatch]);
+
+    useEffect(() => {
         dispatch(getProperties());
-    }, [dispatch, token]);
+    }, [dispatch]);
 
     if (isAuthenticated === null) {
         return <Spinner />;

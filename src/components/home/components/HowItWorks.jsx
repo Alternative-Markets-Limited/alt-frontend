@@ -1,21 +1,21 @@
 import React from 'react';
-import coin from '../../../assets/images/coin.png';
-import hand from '../../../assets/images/hand.png';
-import shake from '../../../assets/images/shake.png';
-import stat from '../../../assets/images/stat.png';
+import coin from '../../../assets/images/coin.svg';
+import hand from '../../../assets/images/hand.svg';
+import shake from '../../../assets/images/shake.svg';
+import stat from '../../../assets/images/stat.svg';
 import { Cards } from './Cards';
 
 const cards = [
     {
         alt: 'coin',
-        description: 'We value the cost of a property in our portfolio and divide into tokens (ALTs)',
+        description: 'We value the cost of a property in our portfolio and divide into tokens (ALTs).',
         image: coin,
         key: 1,
     },
     {
         alt: 'shake',
-        description: `You make your purchase from the tokens (ALTs) available on the platform. 
-        This acquisition transfers to you ownership of tokens for a holding period of 5 years.`,
+        description: `You make your purchase from the ALTs available on the platform. 
+        This acquisition transfers to you ownership of tokens for a holding period.`,
         image: shake,
         key: 2,
     },

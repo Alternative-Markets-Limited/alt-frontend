@@ -11049,6 +11049,10 @@ img {
   font-size: 4rem;
 }
 
+.text-small{
+  font-size: 1.7rem;
+}
+
 .italic{
   font-style: italic;
 }
@@ -24469,6 +24473,10 @@ img {
 
   .sm\:text-6xl{
     font-size: 4rem;
+  }
+
+  .sm\:text-small{
+    font-size: 1.7rem;
   }
 
   .sm\:italic{
@@ -37894,6 +37902,10 @@ img {
     font-size: 4rem;
   }
 
+  .md\:text-small{
+    font-size: 1.7rem;
+  }
+
   .md\:italic{
     font-style: italic;
   }
@@ -51317,6 +51329,10 @@ img {
     font-size: 4rem;
   }
 
+  .lg\:text-small{
+    font-size: 1.7rem;
+  }
+
   .lg\:italic{
     font-style: italic;
   }
@@ -64738,6 +64754,10 @@ img {
 
   .xl\:text-6xl{
     font-size: 4rem;
+  }
+
+  .xl\:text-small{
+    font-size: 1.7rem;
   }
 
   .xl\:italic{
