@@ -36,8 +36,7 @@ function* verifyBvnSaga({ payload }) {
         yield put(verifyBvnSuccess(response));
         alert.success('BVN verified');
     } catch (error) {
-        console.log(error);
-        yield put(verifyBvnError(error.response));
+        yield put(verifyBvnError(error.response.data));
         alert.error('BVN verification failed');
     }
 }
