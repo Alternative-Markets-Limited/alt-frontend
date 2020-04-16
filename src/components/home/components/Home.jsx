@@ -36,7 +36,7 @@ export const Home = () => {
                     <PropertyCard properties={properties} />
                 </section>
                 <section className="bg-gray-100 mt-8 p-8 text-xs md:text-sm">
-                    <p className="container text-black">
+                    <p className="container text-black text-justify">
                     ALTs are issued by Alternative Markets Limited. The Alternative Markets Limited is the manager of the ALT Platform.
                     The advice provided in relation to the ALT Platform and ALTs, including on this website,
                     is general advice only and has been prepared without taking into account your objectives, financial situation or needs.
