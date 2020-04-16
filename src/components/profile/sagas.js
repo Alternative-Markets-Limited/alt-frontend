@@ -2,7 +2,6 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { message as alert } from 'antd';
 import alt from '../../apis/alt';
-import bvn from '../../apis/bvn';
 import {
     createProfileError, createProfileSuccess, verifyBvnError, verifyBvnSuccess
 } from './actions';
@@ -29,12 +28,19 @@ function* createProfileSaga({ payload: { values, history, token } }) {
     }
 }
 
-function* verifyBvnSaga({ payload }) {
+function* verifyBvnSaga({ payload: { values, token } }) {
     try {
-        const response = yield call(bvn.post, '/sfx-verify/v2/bvn', payload);
-        yield put(verifyBvnSuccess(response));
-        console.log(response.data);
-        alert.success('BVN verified');
+        const response = yield call(alt.post, 'user/bvn', values, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+        const { data: { verified } } = response.data;
+        if (!verified) {
+            yield put(verifyBvnError(verified));
+            alert.error('BVN verification failed');
+        } else {
+            yield put(verifyBvnSuccess(verified));
+            alert.success('BVN verified');
+        }
     } catch (error) {
         yield put(verifyBvnError(error.response.data));
         alert.error('BVN verification failed');

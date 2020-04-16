@@ -54,10 +54,13 @@ export const CreateProfileForm = () => {
         const birthday = form.getFieldValue('birthday').format('YYYY-MM-DD');
         const bvn = form.getFieldValue('bvn');
         return dispatch(verifyBvn({
-            bvn,
-            callbackURL: `${process.env.REACT_APP_WEBSITE}/dashboard`,
-            dob: birthday,
-            surname: lastname,
+            token,
+            values: {
+                bvn,
+                callbackURL: `${process.env.REACT_APP_WEBSITE}/dashboard`,
+                dob: birthday,
+                surname: lastname,
+            },
         }));
     };
 
