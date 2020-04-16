@@ -32,11 +32,11 @@ function* createProfileSaga({ payload: { values, history, token } }) {
 function* verifyBvnSaga({ payload }) {
     try {
         const response = yield call(bvn.post, '/sfx-verify/v2/bvn', payload);
-        console.log(response.data);
+        console.log(response);
         yield put(verifyBvnSuccess(response));
         alert.success('BVN verified');
     } catch (error) {
-        console.log(error.response.data);
+        console.log(error);
         yield put(verifyBvnError(error));
         alert.error('Your BVN does not match records');
     }
