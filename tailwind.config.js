@@ -13,6 +13,9 @@ module.exports = {
             fontFamily: {
                 display: ['Montserrat, sans-serif'],
             },
+            fontSize: {
+                small: '1.7rem',
+            },
             spacing: {
                 72: '18rem',
                 84: '21rem',

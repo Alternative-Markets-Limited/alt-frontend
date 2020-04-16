@@ -25,7 +25,7 @@ export const PropertyCard = ({ properties }) => {
                             <span className="block px-3 py-1 text-xs text-gray-600 bg-gray-100 rounded">{category.name}</span>
                             <p className="font-semibold text-sm text-black">
                                 {fractions_qty || investment_population}
-                                <span className="text-xs text-gray-600 font-normal"> tokens</span>
+                                <span className="text-xs text-gray-600 font-normal"> fractions</span>
                             </p>
                         </div>
                         <Link to={`/properties/${id}`}>
@@ -40,7 +40,7 @@ export const PropertyCard = ({ properties }) => {
                                 <p className="font-bold text-xs text-gray-600">₦</p>
                                 <p className="font-bold text-black text-xl">
                                     {formatMoney(min_fraction_price)}
-                                    <span className="text-xs text-gray-600 font-normal"> /token</span>
+                                    <span className="text-xs text-gray-600 font-normal"> /fraction</span>
                                 </p>
                             </div>
                             <div className="flex flex-col">

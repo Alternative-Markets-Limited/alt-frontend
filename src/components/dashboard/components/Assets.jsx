@@ -40,7 +40,7 @@ export const Assets = () => {
                             <h3 className="font-bold text-xl text-center">You presently do not have any assets</h3>
                             <p className="text-sm my-2 text-center">
                         You can start acquiring assets and earning substantial passive income right now.
-                        Peak some of our high performing assets  below
+                        Peek some of our high performing assets  below
                             </p>
                         </>
                     ) : (<PropertyCard properties={propertiesArray} />)}
