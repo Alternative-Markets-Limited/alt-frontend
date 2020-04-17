@@ -6,6 +6,7 @@ import { formatMoney } from '../../common/helpers';
 
 export const OrderModal = ({
     visible, handleOk, handleCancel, onChange, price, tokens, totalAmount, phone, email, callback, close,
+    lastname, firstname,
 }) => (
     <>
         <Modal
@@ -27,6 +28,8 @@ export const OrderModal = ({
                 pay_button_text="Proceed to Payment"
                 class="btn-primary w-full my-3 py-4 text-white"
                 payment_method="card"
+                customer_firstname={firstname}
+                customer_lastname={lastname}
                 customer_email={email}
                 customer_phone={phone}
                 amount={`${totalAmount}`}
@@ -42,8 +45,10 @@ OrderModal.propTypes = {
     callback: PropTypes.func.isRequired,
     close: PropTypes.func.isRequired,
     email: PropTypes.string.isRequired,
+    firstname: PropTypes.string.isRequired,
     handleCancel: PropTypes.func.isRequired,
     handleOk: PropTypes.func.isRequired,
+    lastname: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     phone: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,

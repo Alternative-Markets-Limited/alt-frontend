@@ -23,19 +23,15 @@ function* getPropertySaga({ payload: { id, token } }) {
     }
 }
 
-function* createOrderSaga({ payload: { newOrder, token, history } }) {
+function* createOrderSaga({ payload: { newOrder, token } }) {
     try {
         const response = yield call(alt.post, '/orders', newOrder, {
             headers: { Authorization: `Bearer ${token}` },
         });
         const { data } = response.data;
         yield put(createOrderSuccess(data));
-        yield history.push('/order-success');
-        alert.success('You request is completed');
     } catch (error) {
         const { data: { message } } = error.response;
-        history.push('/order-error');
-        alert.error(message);
         yield put(createOrderError(message));
     }
 }
