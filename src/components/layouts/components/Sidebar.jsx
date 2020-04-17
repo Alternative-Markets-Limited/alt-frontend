@@ -51,6 +51,11 @@ export const Sidebar = ({ pageWrapId, outerContainerId }) => {
             name: 'Register',
             route: '/register',
         },
+        {
+            key: 5,
+            name: 'About Us',
+            route: '/about-us',
+        },
     ];
 
     const authMenu = [
@@ -68,6 +73,11 @@ export const Sidebar = ({ pageWrapId, outerContainerId }) => {
             key: 3,
             name: 'My Assets',
             route: '/assets',
+        },
+        {
+            key: 4,
+            name: 'About Us',
+            route: '/about-us',
         },
     ];
 
