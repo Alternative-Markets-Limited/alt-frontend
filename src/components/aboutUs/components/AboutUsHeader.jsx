@@ -8,7 +8,7 @@ export const AboutUsHeader = () => (
             <p
                 className="text-center text-white -mt-5"
             >
-                We’re on a mission to revolutionize real estate investing by facilitating low capital Accessto high yield assets
+                We’re on a mission to revolutionize real estate investing by facilitating low capital Access to high yield assets
             </p>
         </div>
     </div>
