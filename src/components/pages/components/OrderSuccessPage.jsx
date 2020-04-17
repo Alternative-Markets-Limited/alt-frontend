@@ -9,7 +9,7 @@ export const OrderSuccessPage = () => (
             <RedirectSection
                 image={success}
                 messageText="Your investment plan has been created successfully"
-                actionText="You have successfully purchased alt tokens."
+                actionText="You have successfully purchased alts."
                 name="Go to dashboard"
                 route="/dashboard"
             />
