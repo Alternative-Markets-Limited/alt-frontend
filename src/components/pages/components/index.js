@@ -17,3 +17,4 @@ export * from './ResetPasswordPage';
 export * from './AssetsPage';
 export * from './TransactionsPage';
 export * from './ReturnsPage';
+export * from './AboutUsPage';

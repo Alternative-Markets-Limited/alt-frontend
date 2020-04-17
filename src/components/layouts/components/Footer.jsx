@@ -10,7 +10,7 @@ import { TextLink } from '../../common/components';
 
 const links = [
     [
-        { key: 1, name: 'About Us', route: '/login' },
+        { key: 1, name: 'About Us', route: '/about-us' },
         { key: 2, name: 'Testimonials', route: '/login' },
         { key: 3, name: 'Blog', route: '/login' },
         { key: 4, name: 'Properties', route: '/properties' },
