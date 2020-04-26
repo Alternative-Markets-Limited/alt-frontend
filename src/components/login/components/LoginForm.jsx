@@ -8,6 +8,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { loginUser } from '../actions';
 import { TextLink } from '../../common/components';
 import { formRules, passwordRequired } from '../../common/formRules';
+import { Helmet } from 'react-helmet';
 
 const { emailRules } = formRules;
 const { Item } = Form;
@@ -24,6 +25,9 @@ export const LoginForm = () => {
 
     return (
         <Form name="login" form={form} scrollToFirstError onFinish={onFinish} initialValues={{ remember: true }}>
+            <Helmet>
+              <title>{ "Login Page" }</title>
+            </Helmet>
             <Item name="email" className="my-3" rules={emailRules}>
                 <Input placeholder="Email" prefix={<GlobalOutlined />} className="input-form" />
             </Item>

@@ -5,6 +5,7 @@ import { HowItWorks } from './HowItWorks';
 import { WhyAlts } from './WhyAlts';
 import { SubHeader, Footer } from '../../layouts/components';
 import { PropertyCard, Spinner } from '../../common/components';
+import { Helmet } from 'react-helmet';
 
 export const Home = () => {
     const { properties } = useSelector(state => state.home);
@@ -20,6 +21,9 @@ export const Home = () => {
     return (
         <>
             <main>
+                <Helmet>
+                  <title>{ "AltDotNg | Home" }</title>
+                </Helmet>
                 <section className="pt-0 md:pt-10">
                     <Hero />
                 </section>

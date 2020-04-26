@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { faBuilding } from '@fortawesome/free-regular-svg-icons';
 import { Footer, MiniHeader, SecondaryHeader } from '../../layouts/components';
 import { PropertyCard } from '../../common/components/PropertyCard';
+import { Helmet } from 'react-helmet';
 
 export const Properties = () => {
     const { properties } = useSelector(state => state.home);
@@ -14,6 +15,9 @@ export const Properties = () => {
     return (
         <>
             <main>
+                <Helmet>
+                  <title>{ "AltDotNg | Properties" }</title>
+                </Helmet>
                 <section className="pt-16">
                     <SecondaryHeader />
                     <MiniHeader name="Properties" icon={faBuilding} searchBar />
