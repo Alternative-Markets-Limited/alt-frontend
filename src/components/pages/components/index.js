@@ -18,3 +18,5 @@ export * from './AssetsPage';
 export * from './TransactionsPage';
 export * from './ReturnsPage';
 export * from './AboutUsPage';
+export * from './PostsPage';
+export * from './SinglePostPage';

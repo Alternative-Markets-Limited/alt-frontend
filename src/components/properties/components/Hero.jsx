@@ -9,6 +9,7 @@ export const Hero = ({
             background: `linear-gradient(rgba(20, 20, 20, .5),rgba(20, 20, 20, .5)),url(${
                 image
             })`,
+            backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             height: 'auto',

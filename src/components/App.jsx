@@ -26,7 +26,9 @@ import {
     AssetsPage,
     ReturnsPage,
     TransactionsPage,
-    AboutUsPage
+    AboutUsPage,
+    SinglePostPage,
+    PostsPage
 } from './pages/components';
 import { Header } from './layouts/components';
 import { PrivateRoute, Spinner, AuthRoute } from './common/components';
@@ -71,6 +73,8 @@ const App = () => {
                         <Route exact path="/properties" component={PropertiesPage} />
                         <Route exact path="/reset-password/:token" component={ResetPasswordPage} />
                         <Route exact path="/about-us" component={AboutUsPage} />
+                        <Route exact path="/blog" component={PostsPage} />
+                        <Route exact path="/blog/:slug" component={SinglePostPage} />
                         <AuthRoute exact path="/login" component={LoginPage} />
                         <AuthRoute exact path="/register" component={SignUpPage} />
                         <AuthRoute exact path="/verify" component={VerificationPage} />
