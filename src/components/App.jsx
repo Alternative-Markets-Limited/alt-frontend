@@ -74,6 +74,7 @@ const App = () => {
                         <Route exact path="/about-us" component={AboutUsPage} />
                         <AuthRoute exact path="/login" component={LoginPage} />
                         <AuthRoute exact path="/register" component={SignUpPage} />
+                        <AuthRoute exact path="/register/ref/:token" component={SignUpPage} />
                         <AuthRoute exact path="/verify" component={VerificationPage} />
                         <AuthRoute exact path="/verification-successful" component={EmailVerifiedSuccessPage} />
                         <AuthRoute exact path="/verification-error" component={EmailVerifiedFailurePage} />

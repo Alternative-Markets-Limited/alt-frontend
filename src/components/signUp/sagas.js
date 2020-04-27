@@ -7,9 +7,15 @@ import { REGISTER } from './actionTypes';
 
 const { REGISTER_USER } = REGISTER;
 
-function* registerUserSaga({ payload: { values, history } }) {
+function* registerUserSaga({ payload: { values, history, token } }) {
     try {
-        const response = yield call(alt.post, '/auth/register', values);
+        let formData;
+        if (!token) {
+            formData = values;
+        } else {
+            formData = { ...values, referrer: token };
+        }
+        const response = yield call(alt.post, '/auth/register', formData);
         const { data } = response.data;
         yield put(registerUserSuccess(data));
         alert.success('Registration Successful');
