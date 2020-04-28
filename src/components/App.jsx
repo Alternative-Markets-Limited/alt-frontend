@@ -28,7 +28,8 @@ import {
     TransactionsPage,
     AboutUsPage,
     SinglePostPage,
-    PostsPage
+    PostsPage,
+    ReferralPage
 } from './pages/components';
 import { Header } from './layouts/components';
 import { PrivateRoute, Spinner, AuthRoute } from './common/components';
@@ -78,10 +79,12 @@ const App = () => {
                         <Route exact path="/404" component={Error404Page} />
                         <AuthRoute exact path="/login" component={LoginPage} />
                         <AuthRoute exact path="/register" component={SignUpPage} />
+                        <AuthRoute exact path="/register/ref/:token" component={SignUpPage} />
                         <AuthRoute exact path="/verify" component={VerificationPage} />
                         <AuthRoute exact path="/verification-successful" component={EmailVerifiedSuccessPage} />
                         <AuthRoute exact path="/verification-error" component={EmailVerifiedFailurePage} />
                         <AuthRoute exact path="/forgot-password" component={ForgotPasswordPage} />
+                        <PrivateRoute exact path="/refer" component={ReferralPage} />
                         <PrivateRoute exact path="/agreement" component={AgreementPage} />
                         <PrivateRoute exact path="/order-success" component={OrderSuccessPage} />
                         <PrivateRoute exact path="/order-error" component={OrderErrorPage} />

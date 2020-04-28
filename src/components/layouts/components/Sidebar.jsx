@@ -89,6 +89,11 @@ export const Sidebar = ({ pageWrapId, outerContainerId }) => {
             name: 'Blog',
             route: '/blog',
         },
+        {
+            key: 6,
+            name: 'Refer a Friend',
+            route: '/refer',
+        },
     ];
 
     return (

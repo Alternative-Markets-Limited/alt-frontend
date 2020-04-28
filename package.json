@@ -35,6 +35,7 @@
     "react": "^16.13.0",
     "react-app-rewired": "^2.1.5",
     "react-burger-menu": "^2.6.13",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.0",
     "react-flutterwave-rave": "^1.0.4",
     "react-helmet": "^6.0.0",
