@@ -5,8 +5,10 @@ import PropTypes from 'prop-types';
 
 const { Search } = Input;
 
-export const MiniHeader = ({ name, searchBar, icon }) => (
-    <div className="bg-alt-blue text-white py-10">
+export const MiniHeader = ({
+    name, searchBar, icon, paddingBottom,
+}) => (
+    <div className={`bg-alt-blue text-white pt-10 pb-${paddingBottom} relative z-10`}>
         <div className="container px-2 flex flex-col md:flex-row md:items-center md:justify-between">
             <div className="flex flex-row items-center">
                 <FontAwesomeIcon icon={icon} size="2x" />
@@ -14,7 +16,7 @@ export const MiniHeader = ({ name, searchBar, icon }) => (
             </div>
             {searchBar ? (
                 <Search
-                    placeholder="Search Properties"
+                    placeholder={`Search ${name}`}
                     className="mt-4 md:mt-0 appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight md:w-1/2"
                 />
             ) : null}
@@ -25,10 +27,12 @@ export const MiniHeader = ({ name, searchBar, icon }) => (
 MiniHeader.propTypes = {
     icon: PropTypes.shape().isRequired,
     name: PropTypes.string.isRequired,
+    paddingBottom: PropTypes.number,
     searchBar: PropTypes.bool,
 };
 
 MiniHeader.defaultProps = {
+    paddingBottom: 10,
     searchBar: false,
 };
 

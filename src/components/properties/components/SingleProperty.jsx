@@ -96,8 +96,10 @@ export const SingleProperty = () => {
 
     return (
         <>
-            <SecondaryHeader />
             <main>
+                <section className="pt-16">
+                    <SecondaryHeader />
+                </section>
                 <OrderModal
                     handleCancel={handleCancel}
                     handleOk={handleOk}

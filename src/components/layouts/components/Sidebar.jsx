@@ -56,6 +56,11 @@ export const Sidebar = ({ pageWrapId, outerContainerId }) => {
             name: 'About Us',
             route: '/about-us',
         },
+        {
+            key: 6,
+            name: 'Blog',
+            route: '/blog',
+        },
     ];
 
     const authMenu = [
@@ -78,6 +83,16 @@ export const Sidebar = ({ pageWrapId, outerContainerId }) => {
             key: 4,
             name: 'About Us',
             route: '/about-us',
+        },
+        {
+            key: 5,
+            name: 'Blog',
+            route: '/blog',
+        },
+        {
+            key: 6,
+            name: 'Refer a Friend',
+            route: '/refer',
         },
     ];
 

@@ -4,7 +4,7 @@ import {
     UserAddOutlined, UserOutlined, LockOutlined, GlobalOutlined
 } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { formRules } from '../../common/formRules';
 import { registerUser } from '../actions';
 
@@ -42,8 +42,9 @@ export const SignUpForm = () => {
     const [form] = Form.useForm();
     const dispatch = useDispatch();
     const history = useHistory();
+    const { token } = useParams();
 
-    const onFinish = values => dispatch(registerUser({ history, values }));
+    const onFinish = values => dispatch(registerUser({ history, token, values }));
 
     return (
         <Form form={form} name="signup" scrollToFirstError onFinish={onFinish}>
