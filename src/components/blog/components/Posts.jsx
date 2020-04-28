@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { faBookReader } from '@fortawesome/free-solid-svg-icons';
-import { usePosts } from '../custom-hooks/index';
+import { useDispatch, useSelector } from 'react-redux';
 import { MiniHeader, Footer } from '../../layouts/components';
 import { RecentPost } from './RecentPost';
 import { BlogCard } from './BlogCard';
@@ -8,12 +8,18 @@ import { Quotes } from './Quotes';
 import { Ads } from './Ads';
 import { FollowUs } from './FollowUs';
 import { Spinner } from '../../common/components';
+import { getPosts } from '../actions';
 
 export const Posts = () => {
-    const [posts, isLoading] = usePosts();
+    const { posts, loading } = useSelector(state => state.blog);
     const [latestPost, ...otherPosts] = posts;
+    const dispatch = useDispatch();
 
-    if (isLoading) {
+    useEffect(() => {
+        dispatch(getPosts());
+    }, [dispatch]);
+
+    if (loading) {
         return <Spinner />;
     }
 

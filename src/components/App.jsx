@@ -75,6 +75,7 @@ const App = () => {
                         <Route exact path="/about-us" component={AboutUsPage} />
                         <Route exact path="/blog" component={PostsPage} />
                         <Route exact path="/blog/:slug" component={SinglePostPage} />
+                        <Route exact path="/404" component={Error404Page} />
                         <AuthRoute exact path="/login" component={LoginPage} />
                         <AuthRoute exact path="/register" component={SignUpPage} />
                         <AuthRoute exact path="/verify" component={VerificationPage} />
