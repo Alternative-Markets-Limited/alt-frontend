@@ -18,3 +18,4 @@ export * from './AssetsPage';
 export * from './TransactionsPage';
 export * from './ReturnsPage';
 export * from './AboutUsPage';
+export * from './ReferralPage';
