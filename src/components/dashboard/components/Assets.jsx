@@ -18,7 +18,7 @@ export const Assets = () => {
         dispatch(getUserOrders(token));
     }, [dispatch, token]);
 
-    if (!orders) {
+    if (!orders || !properties) {
         return <Spinner />;
     }
     const propertiesArray = orders.map(({ property, id, fractions_qty }) => ({ fractions_qty, order_id: id, ...property }));
