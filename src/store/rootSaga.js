@@ -9,6 +9,7 @@ import {
 import { watchCreateProfileSaga, watchVerifyBvnSaga } from '../components/profile';
 import { watchGetGetUserOrdersSaga } from '../components/dashboard';
 import { watchGetPropertySaga, watchCreateOrderSaga } from '../components/properties';
+import { watchGetPostsSaga, watchGetPostSaga } from '../components/blog';
 
 export default function* rootSaga() {
     yield all([
@@ -25,5 +26,7 @@ export default function* rootSaga() {
         call(watchResetPasswordSaga),
         call(watchLogoutUserSaga),
         call(watchVerifyBvnSaga),
+        call(watchGetPostsSaga),
+        call(watchGetPostSaga),
     ]);
 }
