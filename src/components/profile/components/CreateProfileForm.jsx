@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import {
-    Form, Input, Button, Upload, DatePicker
+    Form, Input, Button, Upload, DatePicker, message
 } from 'antd';
 import moment from 'moment';
 import { UploadOutlined } from '@ant-design/icons';
@@ -18,8 +18,8 @@ const { Item } = Form;
 export const CreateProfileForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { token } = useSelector(state => state.auth);
-    const { bvn: { loading, error, success } } = useSelector(state => state.profile);
+    const { token, user: { lastname, firstname } } = useSelector(state => state.auth);
+    const { bvn: { loading, error, verified } } = useSelector(state => state.profile);
     const [form] = Form.useForm();
 
     const onFinish = ({
@@ -30,14 +30,17 @@ export const CreateProfileForm = () => {
         values.set('birthday', birthday.format('YYYY-MM-DD'));
         values.set('address', address);
         values.set('bvn', bvn);
-        values.set('occupation', occupation);
+        if (occupation) {
+            values.set('occupation', occupation);
+        }
         if (avatar) {
             values.append('avatar', avatar[0].originFileObj);
         }
-        if (error) {
-            return false;
+        if (error || loading || !verified) {
+            message.info('Please verify your BVN');
+            return;
         }
-        return dispatch(createProfile({ history, token, values }));
+        dispatch(createProfile({ history, token, values }));
     };
 
     const normFile = e => {
@@ -55,7 +58,16 @@ export const CreateProfileForm = () => {
         }
         const birthday = form.getFieldValue('birthday').format('YYYY-MM-DD');
         const bvn = form.getFieldValue('bvn');
-        return dispatch(verifyBvn({ birthday, bvn }));
+        return dispatch(verifyBvn({
+            token,
+            values: {
+                bvn,
+                callbackURL: `${process.env.REACT_APP_WEBSITE}/dashboard`,
+                dob: birthday,
+                firstname,
+                surname: lastname,
+            },
+        }));
     };
 
     const checkStatus = (isLoading, isError, isSuccess) => {
@@ -100,7 +112,7 @@ export const CreateProfileForm = () => {
             placeholder: '2244224422',
             required: true,
             rules: bvnRules,
-            status: checkStatus(loading, error, success),
+            status: checkStatus(loading, error, verified),
         },
         {
             feedback: false,

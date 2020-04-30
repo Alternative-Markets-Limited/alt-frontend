@@ -18,7 +18,7 @@ export const Assets = () => {
         dispatch(getUserOrders(token));
     }, [dispatch, token]);
 
-    if (!orders) {
+    if (!orders || !properties) {
         return <Spinner />;
     }
     const propertiesArray = orders.map(({ property, id, fractions_qty }) => ({ fractions_qty, order_id: id, ...property }));
@@ -40,7 +40,7 @@ export const Assets = () => {
                             <h3 className="font-bold text-xl text-center">You presently do not have any assets</h3>
                             <p className="text-sm my-2 text-center">
                         You can start acquiring assets and earning substantial passive income right now.
-                        Peak some of our high performing assets  below
+                        Peek some of our high performing assets  below
                             </p>
                         </>
                     ) : (<PropertyCard properties={propertiesArray} />)}

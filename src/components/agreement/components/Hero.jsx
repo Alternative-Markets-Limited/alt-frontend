@@ -13,9 +13,15 @@ export const Hero = () => {
                 <h4 className="text-black text-sm lg:text-base">Please agree to the Product Disclosure Statement</h4>
                 <p className="text-xs py-2 mb-2 lg:text-sm">
                 You should consider the
-                    <Link to="/" className="link"> PDS, </Link>
-                    <Link to="/" className="link"> FSG </Link>
-                    , and our
+                    <a
+                        href="https://res.cloudinary.com/altdotng/image/upload/v1587034817/alt_documents/ALT_pds_04-2020_xtu0r9.pdf"
+                        className="underline hover:underline hover:text-alt-blue"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                            &nbsp;PDS,&nbsp;
+                    </a>
+                     and our
                     <Link to="/" className="link"> Terms and Conditions </Link>
                 before making any investment decisions.
                 The advice provided in relation to ALTs is general advice only and has been prepared without taking into account your objectives,

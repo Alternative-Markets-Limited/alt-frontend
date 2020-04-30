@@ -8,3 +8,4 @@ export * from './RedirectSection';
 export * from './AuthRoute';
 export * from './PrivateRoute';
 export * from './AuthMenu';
+export * from './BvnRoute';

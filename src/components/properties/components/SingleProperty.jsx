@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { message } from 'antd';
+import { VerifyTransaction } from 'react-flutterwave-rave';
 import { Footer, SecondaryHeader } from '../../layouts/components';
 import { Spinner } from '../../common/components';
 import { Hero } from './Hero';
@@ -25,7 +26,9 @@ export const SingleProperty = () => {
     const { property } = useSelector(state => state.property);
     const [order, setOrder] = useState({ price: 0, quantity: 1 });
     const { price, quantity } = order;
-    const { email, phone } = user;
+    const {
+        email, phone, firstname, lastname,
+    } = user;
     useEffect(() => {
         dispatch(getProperty({ id, token }));
         return () => {
@@ -59,22 +62,44 @@ export const SingleProperty = () => {
         setOrder({ ...order, price: min_fraction_price * value, quantity: value });
     };
 
-    // TODO: Verify payment backend API
-    const callback = response => {
-        const newOrder = {
-            fractions_qty: quantity,
-            price,
-            property_id: id,
-        };
-        dispatch(createOrder({ history, newOrder, token }));
-    };
+    const callback = response => VerifyTransaction({
+        SECKEY: process.env.REACT_APP_FLUTTER_SECK,
+        live: process.env.NODE_ENV === 'production',
+        txref: response.tx.txRef,
+    }).then(resp => {
+        const { chargeResponse } = resp.data.data.flwMeta;
+        const chargeAmount = resp.data.data.amount;
+        const chargeCurrency = resp.data.data.transaction_currency;
+        const currency = 'NGN';
+        const amount = price;
+
+        if ((chargeResponse === '00' || chargeResponse === '0') && (chargeAmount === amount) && (chargeCurrency === currency)) {
+            // Give Value and return to Success page
+            const newOrder = {
+                fractions_qty: quantity,
+                price,
+                property_id: id,
+            };
+            dispatch(createOrder({ history, newOrder, token }));
+            return history.push('/order-success');
+        }
+        // Dont Give Value and return to Failure page
+        dispatch(createOrderError(resp));
+        return history.push('/order-error');
+    })
+        .catch(error => {
+            dispatch(createOrderError(error));
+            return history.push('/order-error');
+        });
 
     const close = () => message.info('Payment Modal Closed');
 
     return (
         <>
-            <SecondaryHeader />
             <main>
+                <section className="pt-16">
+                    <SecondaryHeader />
+                </section>
                 <OrderModal
                     handleCancel={handleCancel}
                     handleOk={handleOk}
@@ -87,6 +112,8 @@ export const SingleProperty = () => {
                     totalAmount={price}
                     callback={callback}
                     close={close}
+                    firstname={firstname}
+                    lastname={lastname}
                 />
                 <section>
                     <Hero name={name} image={image} category={category.name} min={min_yield} max={max_yield} tokens={investment_population} />

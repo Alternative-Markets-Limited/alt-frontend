@@ -9,6 +9,7 @@ export const Hero = ({
             background: `linear-gradient(rgba(20, 20, 20, .5),rgba(20, 20, 20, .5)),url(${
                 image
             })`,
+            backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             height: 'auto',
@@ -24,7 +25,7 @@ export const Hero = ({
             <div className="flex flex-col  md:flex-row md:items-baseline ">
                 <p className="font-semibold text-sm text-white my-3 mr-0 md:mr-3">
                     {tokens}
-                    <span className="text-xs text-white font-normal"> tokens available</span>
+                    <span className="text-xs text-white font-normal"> fractions available</span>
                 </p>
                 <div className="">
                     <p className="font-semibold text-sm text-white">{`${min} - ${max}%`}</p>
