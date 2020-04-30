@@ -2,6 +2,7 @@ export const POSTS = {
     GET_POSTS: 'GET_POSTS',
     GET_POSTS_ERROR: 'GET_POSTS_ERROR',
     GET_POSTS_SUCCESS: 'GET_POSTS_SUCCESS',
+    SEARCH_POSTS: 'SEARCH_POSTS',
 };
 
 export const POST = {

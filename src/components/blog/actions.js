@@ -3,7 +3,9 @@ import { POST, POSTS } from './actionTypes';
 const {
     GET_POST, GET_POST_ERROR, GET_POST_SUCCESS, REMOVE_POST,
 } = POST;
-const { GET_POSTS, GET_POSTS_ERROR, GET_POSTS_SUCCESS } = POSTS;
+const {
+    GET_POSTS, GET_POSTS_ERROR, GET_POSTS_SUCCESS, SEARCH_POSTS,
+} = POSTS;
 
 export const getPosts = () => ({
     type: GET_POSTS,
@@ -36,4 +38,9 @@ export const getPostError = error => ({
 
 export const removePost = () => ({
     type: REMOVE_POST,
+});
+
+export const searchPost = data => ({
+    payload: data,
+    type: SEARCH_POSTS,
 });

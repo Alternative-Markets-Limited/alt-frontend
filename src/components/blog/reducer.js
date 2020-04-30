@@ -1,12 +1,15 @@
 import { POST, POSTS } from './actionTypes';
 
-const { GET_POSTS, GET_POSTS_ERROR, GET_POSTS_SUCCESS } = POSTS;
+const {
+    GET_POSTS, GET_POSTS_ERROR, GET_POSTS_SUCCESS, SEARCH_POSTS,
+} = POSTS;
 const {
     GET_POST, GET_POST_ERROR, GET_POST_SUCCESS, REMOVE_POST,
 } = POST;
 
 const INITIAL_STATE = {
     error: false,
+    filteredPosts: [],
     loading: false,
     post: null,
     posts: [],
@@ -18,7 +21,7 @@ export default (state = INITIAL_STATE, action) => {
         return { ...state, loading: true };
     case GET_POSTS_SUCCESS:
         return {
-            ...state, error: false, loading: false, posts: action.payload,
+            ...state, error: false, filteredPosts: action.payload, loading: false, posts: action.payload,
         };
     case GET_POSTS_ERROR:
         return {
@@ -37,6 +40,10 @@ export default (state = INITIAL_STATE, action) => {
     case REMOVE_POST:
         return {
             ...state, post: null,
+        };
+    case SEARCH_POSTS:
+        return {
+            ...state, filteredPosts: action.payload,
         };
     default:
         return state;

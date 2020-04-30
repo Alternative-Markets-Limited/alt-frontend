@@ -21,8 +21,7 @@ export const Hero = () => {
                     >
                             &nbsp;PDS,&nbsp;
                     </a>
-                    <Link to="/" className="link"> FSG </Link>
-                    , and our
+                     and our
                     <Link to="/" className="link"> Terms and Conditions </Link>
                 before making any investment decisions.
                 The advice provided in relation to ALTs is general advice only and has been prepared without taking into account your objectives,
