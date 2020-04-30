@@ -13,12 +13,6 @@ export const Hero = () => {
             primary: true,
             route: isAuthenticated ? '/dashboard' : '/register',
         },
-        {
-            key: 2,
-            name: isAuthenticated ? 'My Assets' : 'Login',
-            primary: false,
-            route: isAuthenticated ? '/assets' : '/login',
-        },
     ];
 
     return (
@@ -30,11 +24,11 @@ export const Hero = () => {
                     <h3 className="text-alt-blue">Access to High-Yield</h3>
                     <h3 className="text-alt-blue">Real Estate Assets.</h3>
                 </div>
-                <div className="flex flex-col md:flex-row md:w-4/5">
+                <div className="flex flex-col md:flex-row lg:w-2/3">
                     {buttons.map(({
                         name, primary, key, route,
                     }) => (
-                        <ButtonLink key={key} name={name} primary={primary} className="my-1 md:mr-4" route={route} />
+                        <ButtonLink key={key} name={name} primary={primary} className="my-2 md:mr-4 w-1/2" width="w-1/2" route={route} />
                     ))}
                 </div>
             </div>
