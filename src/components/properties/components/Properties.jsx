@@ -3,9 +3,14 @@ import { useSelector } from 'react-redux';
 import { faBuilding } from '@fortawesome/free-regular-svg-icons';
 import { Footer, MiniHeader, SecondaryHeader } from '../../layouts/components';
 import { PropertyCard } from '../../common/components/PropertyCard';
+import { Spinner } from '../../common/components';
 
 export const Properties = () => {
     const { properties } = useSelector(state => state.home);
+
+    if (!properties) {
+        return <Spinner />;
+    }
 
     if (!properties.length) {
         return <h3 className="text-center text-base md:text-xl text-black font-semibold">There are no properties available at the moment</h3>;

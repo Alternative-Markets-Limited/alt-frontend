@@ -47,10 +47,11 @@ function* loginUserSaga({ payload: { values, history, pathname } }) {
         const response = yield call(alt.post, '/auth/login', omit(values, ['remember']));
         const { data: { token } } = response.data;
         yield put(loginUserSuccess(token));
-        yield alert.success('Login Successful');
-        yield getAuthUserSaga({ payload: token });
-        localStorage.setItem('token', token);
+        const user = yield getUser(token);
+        yield put(getAuthUserSuccess(user));
         yield history.push(pathname);
+        yield alert.success('Login Successful');
+        yield localStorage.setItem('token', token);
     } catch (error) {
         const { data: { message } } = error.response;
         alert.error(message);
@@ -82,9 +83,9 @@ function* resetPasswordSaga({ payload: { values: { email, password }, history, t
         const response = yield call(alt.post, `password/reset/${token}?email=${email}&password=${password}&token=${token}`);
         const { data: { success, message, error } } = response;
         if (success) {
-            alert.success(message);
             yield put(resetPasswordSuccess(message));
             history.push('/login');
+            alert.success(message);
         } else {
             alert.error(error);
             yield put(resetPasswordError(error));
@@ -96,7 +97,7 @@ function* resetPasswordSaga({ payload: { values: { email, password }, history, t
     }
 }
 
-function* logoutUserSaga({ payload: { token, history } }) {
+function* logoutUserSaga({ payload: { token } }) {
     try {
         alert.loading({ content: 'Logging out', key: 'updatable' });
         const response = yield call(alt.post, '/auth/logout', null, { headers: { Authorization: `Bearer ${token}` } });
@@ -104,7 +105,6 @@ function* logoutUserSaga({ payload: { token, history } }) {
         yield put(logoutUserSuccess(message));
         yield localStorage.removeItem('token');
         yield alert.success({ content: 'You have logged out', key: 'updatable' });
-        yield history.push('/login');
     } catch (error) {
         const { data: { message } } = error.response;
         alert.error(message);

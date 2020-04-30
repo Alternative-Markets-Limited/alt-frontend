@@ -14,7 +14,7 @@ export const KeyInformation = ({
         {
             key: 2,
             text: tokens,
-            unit: 'available tokens',
+            unit: 'available fractions',
         },
         {
             key: 3,
@@ -29,7 +29,7 @@ export const KeyInformation = ({
     ];
     return (
         <div className="container px-2">
-            <div className="max-w-xs rounded-lg px-4 py-6 shadow-lg">
+            <div className="max-w-xs rounded-lg px-4 py-6 shadow-lg mx-auto">
                 <div className="container text-sm font-bold mb-3 flex flex-col items-center text-center">
                     <h3 className="my-1">Key Information</h3>
                     <div className="border border-alt-green w-12" />
