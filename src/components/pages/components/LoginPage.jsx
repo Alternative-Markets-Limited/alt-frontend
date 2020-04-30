@@ -7,7 +7,7 @@ export const LoginPage = () =>
 	return(
 		<div>
 			<Helmet>
-				<title>{""}</title>
+				<title>{"Login"}</title>
 			</Helmet>
 			<Login />
 		</div>

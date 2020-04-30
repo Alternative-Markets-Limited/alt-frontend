@@ -8,7 +8,7 @@ export const HomePage = () =>
 	return(
 			<div>
 				<Helmet>
-                  <title>{ "AltDotNg | Home" }</title>
+                  <title>{ "Alt | Home" }</title>
                 </Helmet>
                 <Home />
 			</div>

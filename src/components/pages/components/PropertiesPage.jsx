@@ -7,7 +7,7 @@ export const PropertiesPage = () =>
 	return(
 		<div>
 			<Helmet>
-				<title>{""}</title>
+				<title>{"Alt | Properties "}</title>
 			</Helmet>
 			<Properties />
 		</div>

@@ -7,7 +7,7 @@ export const SignUpPage = () =>
 	return(
 		<div>
 			<Helmet>
-				<title>{""}</title>
+				<title>{"Sign Up"}</title>
 			</Helmet>
 			<SignUp />
 		</div>
