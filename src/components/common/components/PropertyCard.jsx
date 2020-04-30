@@ -19,7 +19,7 @@ export const PropertyCard = ({ properties }) => {
                 category, investment_population, name, about, min_fraction_price, min_yield, max_yield, image, id, order_id, fractions_qty,
             }) => (
                 <div key={order_id || id} className="max-w-xs rounded-lg overflow-hidden shadow-lg border-t-4 border-alt-green">
-                    <img className="w-full bg-gray-200 h-72 object-cover" src={image} alt={name} loading="lazy" width="320" />
+                    <img className="w-full bg-gray-200 object-cover" src={image} alt={name} loading="lazy" width="320" />
                     <div className="px-2 py-4">
                         <div className="flex flex-row items-center justify-between my-2">
                             <span className="block px-3 py-1 text-xs text-gray-600 bg-gray-100 rounded">{category.name}</span>
