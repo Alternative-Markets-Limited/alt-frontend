@@ -18,9 +18,8 @@ const links = [
     [
         { key: 1, name: 'Create Account', route: '/register' },
         { key: 2, name: 'Sign In', route: '/login' },
-        { key: 3, name: 'Trust Deed', route: '/login' },
-        { key: 4, name: 'Terms and Conditions', route: '/login' },
-        { key: 5, name: 'Privacy Policy', route: '/login' },
+        { key: 3, name: 'Terms and Conditions', route: '/login' },
+        { key: 4, name: 'Privacy Policy', route: '/login' },
     ],
 ];
 
