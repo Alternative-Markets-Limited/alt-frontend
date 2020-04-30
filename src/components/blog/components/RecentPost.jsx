@@ -15,15 +15,14 @@ export const RecentPost = ({ post }) => {
         <div
             className="pt-20 pb-10 bg-alt-blue relative -mt-16 z-0 bg-no-repeat bg-cover"
             style={{
-                background: `linear-gradient(rgba(20, 20, 20, .5),rgba(20, 20, 20, .5)),url(${
-                    url
-                })`,
+                backgroundImage: `url(${url})`,
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 height: 'auto',
             }}
         >
+            <div className="bg-black opacity-25 absolute inset-0" />
             <div className="container px-2 text-white relative">
                 <p className="text-white uppercase text-xs my-5">{category}</p>
                 <h3 className="text-white text-3xl font-bold md:text-4xl">{title}</h3>

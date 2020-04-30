@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { faBookReader } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { MiniHeader, Footer } from '../../layouts/components';
@@ -8,11 +8,13 @@ import { Quotes } from './Quotes';
 import { Ads } from './Ads';
 import { FollowUs } from './FollowUs';
 import { Spinner } from '../../common/components';
-import { getPosts } from '../actions';
+import { getPosts, searchPost } from '../actions';
+import { filterArray } from '../../common/helpers';
 
 export const Posts = () => {
-    const { posts, loading } = useSelector(state => state.blog);
-    const [latestPost, ...otherPosts] = posts;
+    const [term, setTerm] = useState('');
+    const { filteredPosts, posts, loading } = useSelector(state => state.blog);
+    const [latestPost, ...otherPosts] = filteredPosts;
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -23,11 +25,28 @@ export const Posts = () => {
         return <Spinner />;
     }
 
+    const filters = {
+        fields: ({ title }) => title.toLowerCase().includes(term.toLowerCase() || !term),
+    };
+
+    const onChange = e => {
+        setTerm(e.target.value);
+        const filter = filterArray(posts, filters);
+        const result = e.target.value === '' || e.target.value.length <= 1 ? posts : filter;
+        dispatch(searchPost(result));
+    };
+
     return (
         <>
             <main>
                 <section className="pt-16">
-                    <MiniHeader searchBar name="Our Blog" icon={faBookReader} paddingBottom={20} />
+                    <MiniHeader
+                        searchBar
+                        name="Our Blog"
+                        icon={faBookReader}
+                        paddingBottom={20}
+                        onChange={onChange}
+                    />
                     <div className="container px-2">
                         <div className="bg-white rounded shadow text-sm px-2 py-6 max-w-lg mx-auto -mt-10 relative z-10">
                             <p className="text-center text-base text-alt-blue">The latest on happenings in real estate around the world </p>
