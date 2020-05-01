@@ -10027,7 +10027,6 @@ react-share@^4.1.0:
     classnames "^2.2.5"
     jsonp "^0.2.1"
 
-
 react-side-effect@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.0.tgz#1ce4a8b4445168c487ed24dab886421f74d380d3"

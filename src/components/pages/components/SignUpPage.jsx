@@ -1,16 +1,16 @@
 import React from 'react';
 import { SignUp } from '../../signUp/components';
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
 
-export const SignUpPage = () =>{
-
+export const SignUpPage = () => 
+{
 	return(
 		<div>
 			<Helmet>
-				<title>{ "Sign Up" }</title>
+				<title>{"Sign Up"}</title>
 			</Helmet>
 			<SignUp />
 		</div>
 		);
-} 
+}
 // <SignUp />;

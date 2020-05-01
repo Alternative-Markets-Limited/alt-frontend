@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://altappng.herokuapp.com/",
+<<<<<<< HEAD
   "engines": {
     "node": "13.2.0",
     "npm": "6.13.1"
   },
+=======
+>>>>>>> f956f6d2bcf6e8a8d7f083b10fbfcaead294743d
   "dependencies": {
     "@ant-design/icons": "^4.0.3",
     "@contentful/rich-text-react-renderer": "^13.4.0",
