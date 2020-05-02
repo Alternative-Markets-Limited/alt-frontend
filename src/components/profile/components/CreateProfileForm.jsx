@@ -56,7 +56,7 @@ export const CreateProfileForm = () => {
             form.validateFields(['bvn', 'birthday']);
             return false;
         }
-        const birthday = form.getFieldValue('birthday').format('YYYY-MM-DD');
+        const birthday = moment(new Date(form.getFieldValue('birthday'))).format('YYYY-MM-DD');
         const bvn = form.getFieldValue('bvn');
         return dispatch(verifyBvn({
             token,
