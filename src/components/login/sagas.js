@@ -44,7 +44,7 @@ function* getAuthUserSaga({ payload }) {
 
 function* loginUserSaga({ payload: { values, history, pathname } }) {
     try {
-        const response = yield call(alt.post, '/auth/login', omit(values, ['remember']));
+        const response = yield call(alt.post, '/auth/login', omit({ ...values, email: values.email.toLowerCase() }, ['remember']));
         const { data: { token } } = response.data;
         yield put(loginUserSuccess(token));
         const user = yield getUser(token);
