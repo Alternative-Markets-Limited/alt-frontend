@@ -11,9 +11,9 @@ function* registerUserSaga({ payload: { values, history, token } }) {
     try {
         let formData;
         if (!token) {
-            formData = values;
+            formData = { ...values, email: values.email.toLowerCase() };
         } else {
-            formData = { ...values, referrer: token };
+            formData = { ...values, email: values.email.toLowerCase(), referrer: token };
         }
         const response = yield call(alt.post, '/auth/register', formData);
         const { data } = response.data;
