@@ -1,7 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Properties } from '../../properties/components';
-import { Helmet } from "react-helmet";
 
 export const PropertiesPage = () => (
     <div>

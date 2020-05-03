@@ -1,10 +1,14 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { RedirectSection } from '../../common/components';
 import { Footer } from '../../layouts/components';
 import error from '../../../assets/images/close.svg';
 
 export const OrderErrorPage = () => (
     <>
+        <Helmet>
+            <title>Order - Error</title>
+        </Helmet>
         <main>
             <RedirectSection
                 image={error}
