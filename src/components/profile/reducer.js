@@ -15,7 +15,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
     case CREATE_PROFILE:
-        return { ...state, loading: true };
+        return { ...state, error: false, loading: true };
     case CREATE_PROFILE_SUCCESS:
         return {
             ...state, error: false, loading: false, profile: action.payload,
