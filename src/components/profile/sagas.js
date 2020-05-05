@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { message as alert } from 'antd';
+import { map } from 'lodash';
 import alt from '../../apis/alt';
 import {
     createProfileError, createProfileSuccess, verifyBvnError, verifyBvnSuccess
@@ -23,8 +24,13 @@ function* createProfileSaga({ payload: { values, history, token } }) {
         yield history.push('/dashboard');
     } catch (error) {
         const { data: { data, message } } = error.response;
-        alert.error(message);
-        yield put(createProfileError(data));
+        if (message === 'validation error') {
+            map(data, err => alert.error(err[0]));
+            yield put(createProfileError(data));
+        } else {
+            alert.error(data);
+            yield put(createProfileError(data));
+        }
     }
 }
 
