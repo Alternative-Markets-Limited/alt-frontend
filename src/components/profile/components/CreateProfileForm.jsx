@@ -27,13 +27,13 @@ export const CreateProfileForm = () => {
     }) => {
         const values = new FormData();
         values.set('phone', phone);
-        values.set('birthday', birthday.format('YYYY-MM-DD'));
+        values.set('birthday', moment(new Date(birthday)).format('YYYY-MM-DD'));
         values.set('address', address);
         values.set('bvn', bvn);
         if (occupation) {
             values.set('occupation', occupation);
         }
-        if (avatar) {
+        if (avatar && avatar.length) {
             values.append('avatar', avatar[0].originFileObj);
         }
         if (error || loading || !verified) {
