@@ -15,6 +15,7 @@ import { GridGallery } from './Gallery';
 import {
     getProperty, cleanProperty, createOrder, createOrderError
 } from '../actions';
+import { getUserOrders } from '../../dashboard/actions';
 import { OrderModal } from './OrderModal';
 
 export const SingleProperty = () => {
@@ -24,6 +25,7 @@ export const SingleProperty = () => {
     const { id } = useParams();
     const { token, user } = useSelector(state => state.auth);
     const { property } = useSelector(state => state.property);
+    const { orders } = useSelector(state => state.dashboard);
     const [order, setOrder] = useState({ price: 0, quantity: 1 });
     const { price, quantity } = order;
     const {
@@ -36,7 +38,13 @@ export const SingleProperty = () => {
         };
     }, [dispatch, id, token]);
 
-    if (!property) {
+    useEffect(() => {
+        if (!orders) {
+            dispatch(getUserOrders(token));
+        }
+    }, [token, orders]);
+
+    if (!property || !orders) {
         return <Spinner />;
     }
 
@@ -59,6 +67,7 @@ export const SingleProperty = () => {
     };
 
     const onChange = value => {
+        if (typeof value !== 'number') return;
         setOrder({ ...order, price: min_fraction_price * value, quantity: value });
     };
 
@@ -102,6 +111,8 @@ export const SingleProperty = () => {
                 </section>
                 <OrderModal
                     handleCancel={handleCancel}
+                    orders={orders}
+                    id={id}
                     handleOk={handleOk}
                     visible={visible}
                     onChange={onChange}
