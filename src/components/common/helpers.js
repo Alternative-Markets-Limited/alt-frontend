@@ -6,7 +6,7 @@
 
 export const formatMoney = amount => {
     if (typeof (amount) === 'number') {
-        return amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        return amount.toLocaleString();
     }
     return 'Invalid Amount';
 };

@@ -16,10 +16,10 @@ export const OrderModal = ({
             footer={false}
         >
             <p>How many fractions would you like to invest in?</p>
+            <small className="italic text-gray-500">(You can only purchase 200 fractions per property)</small>
             <InputNumber
                 min={1}
                 max={determineMaxFraction(orders, { id, tokens }, 200)}
-                defaultValue={1}
                 onChange={onChange}
                 type="number"
                 required
@@ -32,19 +32,21 @@ export const OrderModal = ({
                 </div>
                 <p>NGN</p>
             </div>
-            <Rave
-                pay_button_text="Proceed to Payment"
-                class="btn-primary w-full my-3 py-4 text-white"
-                payment_method="card"
-                customer_firstname={firstname}
-                customer_lastname={lastname}
-                customer_email={email}
-                customer_phone={phone}
-                amount={`${totalAmount}`}
-                ravePubKey={process.env.REACT_APP_FLUTTER_PUBK}
-                callback={callback}
-                onclose={close}
-            />
+            { !!totalAmount && (
+                <Rave
+                    pay_button_text="Proceed to Payment"
+                    class="btn-primary w-full my-3 py-4 text-white"
+                    payment_method="card"
+                    customer_firstname={firstname}
+                    customer_lastname={lastname}
+                    customer_email={email}
+                    customer_phone={phone}
+                    amount={`${totalAmount}`}
+                    ravePubKey={process.env.REACT_APP_FLUTTER_PUBK}
+                    callback={callback}
+                    onclose={close}
+                />
+            )}
         </Modal>
     </>
 );
