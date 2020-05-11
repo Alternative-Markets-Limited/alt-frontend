@@ -19,7 +19,6 @@ const links = [
         { key: 1, name: 'Create Account', route: '/register' },
         { key: 2, name: 'Sign In', route: '/login' },
         { key: 3, name: 'Terms and Conditions', route: '/login' },
-        { key: 4, name: 'Privacy Policy', route: '/login' },
     ],
 ];
 
@@ -54,9 +53,24 @@ export const Footer = () => (
                     <div>
                         <h3 className="text-alt-blue font-bold mb-2 uppercase">Quick Links</h3>
                         <ul className="my-2 md:my-0">
-                            {links[1].map(({ name, key, route }) => (
-                                <TextLink name={name} key={key} route={route} />
+                            {links[1].map(({
+                                name, key, route, href,
+                            }) => (
+                                <TextLink name={name} key={key} route={route} href={href} />
                             ))}
+                            <li
+                                className="my-1 list-none"
+                            >
+                                <a
+                                    href="
+                                    https://res.cloudinary.com/altdotng/image/upload/v1588770869/alt_documents/Alt.ng-_Privacy_Policy_bxhngh.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="cursor-pointer hover:underline hover:text-alt-blue"
+                                >
+                                    Privacy Policy
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
