@@ -16,6 +16,7 @@ import { GridGallery } from './Gallery';
 import {
     getProperty, cleanProperty, createOrder, createOrderError
 } from '../actions';
+import { getUserOrders } from '../../dashboard/actions';
 import { OrderModal } from './OrderModal';
 
 export const SingleProperty = () => {
@@ -25,7 +26,8 @@ export const SingleProperty = () => {
     const { slug } = useParams();
     const { token, user } = useSelector(state => state.auth);
     const { property } = useSelector(state => state.property);
-    const [order, setOrder] = useState({ price: 0, quantity: 1 });
+    const { orders } = useSelector(state => state.dashboard);
+    const [order, setOrder] = useState({ price: 0, quantity: 0 });
     const { price, quantity } = order;
     const {
         email, phone, firstname, lastname,
@@ -37,7 +39,13 @@ export const SingleProperty = () => {
         };
     }, [dispatch, slug, token]);
 
-    if (!property) {
+    useEffect(() => {
+        if (!orders) {
+            dispatch(getUserOrders(token));
+        }
+    }, [dispatch, token, orders]);
+
+    if (!property || !orders) {
         return <Spinner />;
     }
 
@@ -60,6 +68,9 @@ export const SingleProperty = () => {
     };
 
     const onChange = value => {
+        if (typeof value !== 'number' || value === '') {
+            setOrder({ ...order, price: 0, quantity: 0 });
+        }
         setOrder({ ...order, price: min_fraction_price * value, quantity: value });
     };
 
@@ -81,16 +92,14 @@ export const SingleProperty = () => {
                 price,
                 property_id: id,
             };
-            dispatch(createOrder({ history, newOrder, token }));
-            return history.push('/order-success');
+            return dispatch(createOrder({ history, newOrder, token }));
         }
         // Dont Give Value and return to Failure page
-        dispatch(createOrderError(resp));
         return history.push('/order-error');
     })
         .catch(error => {
-            dispatch(createOrderError(error));
-            return history.push('/order-error');
+            history.push('/order-error');
+            return error;
         });
 
     const close = () => message.info('Payment Modal Closed');
@@ -106,6 +115,8 @@ export const SingleProperty = () => {
                 </section>
                 <OrderModal
                     handleCancel={handleCancel}
+                    orders={orders}
+                    id={id}
                     handleOk={handleOk}
                     visible={visible}
                     onChange={onChange}
@@ -138,7 +149,7 @@ export const SingleProperty = () => {
                             />
                         </div>
                         <div className="col-span-3 md:col-span-2">
-                            <GridGallery gallery={gallery} />
+                            {gallery && <GridGallery gallery={gallery} />}
                         </div>
                     </div>
                 </section>
