@@ -6,6 +6,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { message } from 'antd';
 import { VerifyTransaction } from 'react-flutterwave-rave';
+import { Helmet } from 'react-helmet';
 import { Footer, SecondaryHeader } from '../../layouts/components';
 import { Spinner } from '../../common/components';
 import { Hero } from './Hero';
@@ -22,7 +23,7 @@ export const SingleProperty = () => {
     const [visible, setVisible] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
-    const { id } = useParams();
+    const { slug } = useParams();
     const { token, user } = useSelector(state => state.auth);
     const { property } = useSelector(state => state.property);
     const { orders } = useSelector(state => state.dashboard);
@@ -32,11 +33,11 @@ export const SingleProperty = () => {
         email, phone, firstname, lastname,
     } = user;
     useEffect(() => {
-        dispatch(getProperty({ id, token }));
+        dispatch(getProperty({ slug, token }));
         return () => {
             dispatch(cleanProperty());
         };
-    }, [dispatch, id, token]);
+    }, [dispatch, slug, token]);
 
     useEffect(() => {
         if (!orders) {
@@ -49,7 +50,7 @@ export const SingleProperty = () => {
     }
 
     const {
-        name, image, category, min_yield, max_yield, gallery,
+        id, name, image, category, min_yield, max_yield, gallery,
         investment_population, about, video, location, holding_period, min_fraction_price, brochure,
     } = property;
 
@@ -105,6 +106,9 @@ export const SingleProperty = () => {
 
     return (
         <>
+            <Helmet>
+                <title>{name}</title>
+            </Helmet>
             <main>
                 <section className="pt-16">
                     <SecondaryHeader />

@@ -9,9 +9,9 @@ import { PROPERTY, ORDER } from './actionTypes';
 const { CREATE_ORDER } = ORDER;
 const { GET_PROPERTY } = PROPERTY;
 
-function* getPropertySaga({ payload: { id, token } }) {
+function* getPropertySaga({ payload: { slug, token } }) {
     try {
-        const response = yield call(alt.get, `/property/${id}`, {
+        const response = yield call(alt.get, `/property/${slug}`, {
             headers: { Authorization: `Bearer ${token}` },
         });
         const { data } = response.data;

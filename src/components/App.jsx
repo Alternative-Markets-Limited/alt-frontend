@@ -90,7 +90,7 @@ const App = () => {
                         <PrivateRoute exact path="/order-error" component={OrderErrorPage} />
                         <PrivateRoute exact path="/create-profile" component={CreateProfilePage} />
                         <PrivateRoute exact path="/dashboard" component={DashboardPage} />
-                        <PrivateRoute exact path="/properties/:id" component={SinglePropertyPage} />
+                        <PrivateRoute exact path="/properties/:slug" component={SinglePropertyPage} />
                         <PrivateRoute exact path="/assets" component={AssetsPage} />
                         <PrivateRoute exact path="/transactions" component={TransactionsPage} />
                         <PrivateRoute exact path="/returns" component={ReturnsPage} />
