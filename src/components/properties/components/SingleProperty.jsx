@@ -6,6 +6,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { message } from 'antd';
 import { VerifyTransaction } from 'react-flutterwave-rave';
+import { Helmet } from 'react-helmet';
 import { Footer, SecondaryHeader } from '../../layouts/components';
 import { Spinner } from '../../common/components';
 import { Hero } from './Hero';
@@ -96,6 +97,9 @@ export const SingleProperty = () => {
 
     return (
         <>
+            <Helmet>
+                <title>{name}</title>
+            </Helmet>
             <main>
                 <section className="pt-16">
                     <SecondaryHeader />
