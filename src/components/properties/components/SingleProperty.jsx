@@ -22,7 +22,7 @@ export const SingleProperty = () => {
     const [visible, setVisible] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
-    const { id } = useParams();
+    const { slug } = useParams();
     const { token, user } = useSelector(state => state.auth);
     const { property } = useSelector(state => state.property);
     const [order, setOrder] = useState({ price: 0, quantity: 1 });
@@ -31,18 +31,18 @@ export const SingleProperty = () => {
         email, phone, firstname, lastname,
     } = user;
     useEffect(() => {
-        dispatch(getProperty({ id, token }));
+        dispatch(getProperty({ slug, token }));
         return () => {
             dispatch(cleanProperty());
         };
-    }, [dispatch, id, token]);
+    }, [dispatch, slug, token]);
 
     if (!property) {
         return <Spinner />;
     }
 
     const {
-        name, image, category, min_yield, max_yield, gallery,
+        id, name, image, category, min_yield, max_yield, gallery,
         investment_population, about, video, location, holding_period, min_fraction_price, brochure,
     } = property;
 

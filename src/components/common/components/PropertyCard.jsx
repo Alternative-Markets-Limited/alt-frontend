@@ -16,7 +16,7 @@ export const PropertyCard = ({ properties }) => {
     return (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 g-justify-items-center">
             { properties.map(({
-                category, investment_population, name, about, min_fraction_price, min_yield, max_yield, image, id, order_id, fractions_qty,
+                category, investment_population, name, about, min_fraction_price, min_yield, max_yield, image, id, order_id, fractions_qty, slug,
             }) => (
                 <div key={order_id || id} className="max-w-xs rounded-lg overflow-hidden shadow-lg border-t-4 border-alt-green">
                     <img className="w-full bg-gray-200 object-cover" src={image} alt={name} loading="lazy" width="320" />
@@ -28,7 +28,7 @@ export const PropertyCard = ({ properties }) => {
                                 <span className="text-xs text-gray-600 font-normal"> fractions</span>
                             </p>
                         </div>
-                        <Link to={`/properties/${id}`}>
+                        <Link to={`/properties/${slug}`}>
                             <h3 className="uppercase font-semibold text-base my-3 text-alt-blue hover:underline">{name}</h3>
                         </Link>
                         <Paragraph ellipsis={{ rows: 3 }} className="text-gray-600 text-xs">
