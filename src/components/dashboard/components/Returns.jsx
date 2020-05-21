@@ -14,7 +14,7 @@ export const Returns = () => (
                 <h3 className="font-bold text-xl text-center">You presently do not have any returns</h3>
                 <p className="text-sm my-2 text-center">
                         You can start acquiring assets and earning substantial passive income right now.
-                        Peek some of our high performing assets  below
+                        Peek some of our high performing assets below
                 </p>
                 <ButtonLink route="/properties" name="View Properties" className="my-5 max-w-xs" />
             </section>

@@ -5,6 +5,7 @@ import { Typography } from 'antd';
 import PropTypes from 'prop-types';
 import { formatMoney } from '../helpers';
 import { Spinner } from './Spinner';
+import { ButtonLink } from './ButtonLink';
 
 const { Paragraph } = Typography;
 
@@ -34,6 +35,9 @@ export const PropertyCard = ({ properties }) => {
                         <Paragraph ellipsis={{ rows: 3 }} className="text-gray-600 text-xs">
                             {about}
                         </Paragraph>
+                        <div className="my-5">
+                            <ButtonLink name="Buy Now" route={`/properties/${slug}`} />
+                        </div>
                         <div className="border mb-2 opacity-50" />
                         <div className="flex flex-row justify-between items-center">
                             <div className="flex flex-row">

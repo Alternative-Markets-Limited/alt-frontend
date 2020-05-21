@@ -8,7 +8,7 @@ export const TextLink = ({
     <li
         className={`my-1 list-none ${inline ? 'inline' : null}`}
     >
-        <Link to={route} className={`cursor-pointer hover:underline hover:text-alt-blue ${className}`}>
+        <Link to={route} className={`cursor-pointer hover:underline ${className}`}>
             {name}
         </Link>
     </li>

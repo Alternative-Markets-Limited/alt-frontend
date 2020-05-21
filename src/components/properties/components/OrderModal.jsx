@@ -58,7 +58,7 @@ OrderModal.propTypes = {
     firstname: PropTypes.string.isRequired,
     handleCancel: PropTypes.func.isRequired,
     handleOk: PropTypes.func.isRequired,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     lastname: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     orders: PropTypes.arrayOf(PropTypes.shape()).isRequired,

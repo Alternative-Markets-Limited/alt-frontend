@@ -1,17 +1,17 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import {
-    Form, Input, Button, Upload, DatePicker, message
+    Form, Input, Button, DatePicker, message
 } from 'antd';
 import moment from 'moment';
-import { UploadOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { omit } from 'lodash';
 import { formRules } from '../../common/formRules';
 import { createProfile, verifyBvn } from '../actions';
 
 const {
-    dobRules, phoneRules, bvnRules, addressRules,
+    dobRules, phoneRules, bvnRules, addressRules, firstnameRules, lastnameRules,
 } = formRules;
 const { Item } = Form;
 
@@ -22,30 +22,22 @@ export const CreateProfileForm = () => {
     const { bvn: { loading, error, verified } } = useSelector(state => state.profile);
     const [form] = Form.useForm();
 
-    const onFinish = ({
-        phone, birthday, address, bvn, avatar, occupation,
-    }) => {
-        const values = new FormData();
-        values.set('phone', phone);
-        values.set('birthday', moment(new Date(birthday)).format('YYYY-MM-DD'));
-        values.set('address', address);
-        values.set('bvn', bvn);
-        if (occupation) {
-            values.set('occupation', occupation);
+    const onFinish = values => {
+        const formValues = { ...values, birthday: moment(new Date(values.birthday)).format('YYYY-MM-DD') };
+
+        let formattedFormValues;
+
+        if (values.firstname === firstname || values.lastname === lastname) {
+            formattedFormValues = omit(formValues, ['firstname', 'lastname']);
+        } else {
+            formattedFormValues = formValues;
         }
-        if (avatar && avatar.length) {
-            values.append('avatar', avatar[0].originFileObj);
-        }
+
         if (error || loading || !verified) {
             message.info('Please verify your BVN');
             return;
         }
-        dispatch(createProfile({ history, token, values }));
-    };
-
-    const normFile = e => {
-        if (Array.isArray(e)) return e;
-        return e && e.fileList;
+        dispatch(createProfile({ formattedFormValues, history, token }));
     };
 
     const dateFormat = 'DD-MM-YYYY';
@@ -58,14 +50,15 @@ export const CreateProfileForm = () => {
         }
         const birthday = moment(new Date(form.getFieldValue('birthday'))).format('YYYY-MM-DD');
         const bvn = form.getFieldValue('bvn');
+
         return dispatch(verifyBvn({
             token,
             values: {
                 bvn,
                 callbackURL: `${process.env.REACT_APP_WEBSITE}/dashboard`,
                 dob: birthday,
-                firstname,
-                surname: lastname,
+                firstname: form.getFieldValue('firstname'),
+                surname: form.getFieldValue('lastname'),
             },
         }));
     };
@@ -82,6 +75,18 @@ export const CreateProfileForm = () => {
     };
 
     const formItems = [
+        {
+            feedback: true,
+            help: error,
+            key: 3,
+            label: 'Bank Verification Number:',
+            name: 'bvn',
+            onBlur: handleOnBlur,
+            placeholder: '2244224422',
+            required: true,
+            rules: bvnRules,
+            status: checkStatus(loading, error, verified),
+        },
         {
             feedback: false,
             key: 1,
@@ -102,39 +107,15 @@ export const CreateProfileForm = () => {
             rules: addressRules,
             status: '',
         },
-        {
-            feedback: true,
-            help: error,
-            key: 3,
-            label: 'Bank Verification Number:',
-            name: 'bvn',
-            onBlur: handleOnBlur,
-            placeholder: '2244224422',
-            required: true,
-            rules: bvnRules,
-            status: checkStatus(loading, error, verified),
-        },
-        {
-            feedback: false,
-            key: 4,
-            label: 'Occupation:',
-            name: 'occupation',
-            placeholder: 'Investment Banker',
-            required: false,
-            rules: [],
-            status: '',
-        },
     ];
 
     return (
-        <Form name="createProfile" layout="vertical" form={form} onFinish={onFinish}>
-            <Item name="avatar" className="my-3" valuePropName="fileList" label="Profile Picture:" getValueFromEvent={normFile}>
-                <Upload name="logo" listType="picture" beforeUpload={() => false} accept="image/*">
-                    <Button className="border-gray-200 border-2 rounded">
-                        <UploadOutlined />
-                        <span className="text-xs text-black">Click to upload</span>
-                    </Button>
-                </Upload>
+        <Form name="createProfile" layout="vertical" form={form} onFinish={onFinish} initialValues={{ firstname, lastname }}>
+            <Item name="firstname" className="mb-3" label="Firstname" required rules={firstnameRules}>
+                <Input className="input-form" placeholder="Firstname" disabled={verified} />
+            </Item>
+            <Item name="lastname" className="mb-3" label="Lastname" required rules={lastnameRules}>
+                <Input className="input-form" placeholder="Lastname" disabled={verified} />
             </Item>
             <Item name="birthday" className="mb-3" label="Date of Birth" rules={dobRules}>
                 <DatePicker
@@ -143,6 +124,7 @@ export const CreateProfileForm = () => {
                     format={dateFormat}
                     defaultPickerValue={moment(moment().subtract(17, 'years'))}
                     disabledDate={disabledDate}
+                    disabled={verified}
                 />
             </Item>
             {formItems.map(({

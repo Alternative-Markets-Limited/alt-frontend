@@ -59,13 +59,15 @@ export const Posts = () => {
                 <section className="my-10">
                     <div className="container px-2">
                         <div className="flex flex-col justify-between lg:flex-row w-full">
-                            {!otherPosts.length ? <h3 className="text-center text-base md:text-xl text-black font-semibold">No posts found</h3> : (
-                                <div className="content-start grid grid-cols-1 gap-12 md:grid-cols-2 g-justify-items-center lg:w-2/3">
-                                    {otherPosts.map(({ sys, fields }) => (
-                                        <BlogCard key={sys.id} sys={sys} fields={fields} />
-                                    ))}
-                                </div>
-                            )}
+                            {!filteredPosts.length
+                                ? <h3 className="text-center text-base md:text-xl text-black font-semibold">No posts found</h3>
+                                : (
+                                    <div className="content-start grid grid-cols-1 gap-12 md:grid-cols-2 g-justify-items-center lg:w-2/3">
+                                        {otherPosts && otherPosts.map(({ sys, fields }) => (
+                                            <BlogCard key={sys.id} sys={sys} fields={fields} />
+                                        ))}
+                                    </div>
+                                )}
                             <aside className="lg:w-1/4">
                                 <div className="max-w-x relative z-0">
                                     <Quotes />

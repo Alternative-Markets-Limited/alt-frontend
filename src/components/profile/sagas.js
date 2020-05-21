@@ -12,10 +12,10 @@ import { PROFILE, BVN } from './actionTypes';
 const { CREATE_PROFILE } = PROFILE;
 const { VERIFIY_BVN } = BVN;
 
-function* createProfileSaga({ payload: { values, history, token } }) {
+function* createProfileSaga({ payload: { formattedFormValues, history, token } }) {
     try {
-        const response = yield call(alt.post, 'user/profile', values, {
-            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'multipart/form-data' },
+        const response = yield call(alt.post, 'user/profile', formattedFormValues, {
+            headers: { Authorization: `Bearer ${token}` },
         });
         const { data, message } = response.data;
         alert.success(message);
@@ -42,7 +42,7 @@ function* verifyBvnSaga({ payload: { values, token } }) {
         const { data: { verified } } = response.data;
         if (!verified) {
             yield put(verifyBvnError(verified));
-            alert.error('BVN verification failed');
+            alert.error('Firstname, Lastname and Date of Birth must correspond  with BVN');
         } else {
             yield put(verifyBvnSuccess(verified));
             alert.success('BVN verified');
