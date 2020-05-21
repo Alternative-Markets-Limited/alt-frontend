@@ -1,12 +1,16 @@
 import React from 'react';
-import { Modal, InputNumber } from 'antd';
+import {
+    Modal, InputNumber, Select
+} from 'antd';
 import PropTypes from 'prop-types';
 import Rave from 'react-flutterwave-rave';
 import { formatMoney, determineMaxFraction } from '../../common/helpers';
 
+const { Option } = Select;
+
 export const OrderModal = ({
     visible, handleOk, handleCancel, onChange, price, tokens, totalAmount, phone, email, callback, close,
-    lastname, firstname, orders, id,
+    lastname, firstname, orders, id, yieldPeriod, onSelectChange, yieldValue,
 }) => (
     <>
         <Modal
@@ -22,9 +26,18 @@ export const OrderModal = ({
                 max={determineMaxFraction(orders, { id, tokens }, 200)}
                 onChange={onChange}
                 type="number"
-                required
                 className="input-form w-full my-3"
+                placeholder="Number of fractions"
             />
+            <Select
+                className="input-form w-full mb-3"
+                placeholder="Yield period"
+                onChange={onSelectChange}
+            >
+                {Object.entries(yieldPeriod).map(([key, value]) => (
+                    <Option key={key} value={key}>{`${key} Months (about ${value}% yield)`}</Option>
+                ))}
+            </Select>
             <div className="flex flex-row items-center justify-between w-full bg-gray-200 text-gray-900 p-4 rounded text-gray-900 font-medium">
                 <div className="flex flex-row">
                     <p className="mr-4">₦</p>
@@ -32,7 +45,7 @@ export const OrderModal = ({
                 </div>
                 <p>NGN</p>
             </div>
-            { !!totalAmount && (
+            { !!totalAmount && yieldValue && (
                 <Rave
                     pay_button_text="Proceed to Payment"
                     class="btn-primary w-full my-3 py-4 text-white"
@@ -61,10 +74,17 @@ OrderModal.propTypes = {
     id: PropTypes.number.isRequired,
     lastname: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
+    onSelectChange: PropTypes.func.isRequired,
     orders: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     phone: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     tokens: PropTypes.number.isRequired,
     totalAmount: PropTypes.number.isRequired,
     visible: PropTypes.bool.isRequired,
+    yieldPeriod: PropTypes.shape().isRequired,
+    yieldValue: PropTypes.number,
+};
+
+OrderModal.defaultProps = {
+    yieldValue: null,
 };

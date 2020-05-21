@@ -23,9 +23,9 @@ export const Transactions = () => {
     }
 
     const propertiesArray = orders.map(({
-        created_at, property, fractions_qty, price, id, active,
+        created_at, property, fractions_qty, price, id, active, end_date,
     }) => ({
-        active, created_at, fractions_qty, key: id, price, property: property.name,
+        active, created_at, end_date, fractions_qty, key: id, price, property: property.name,
     }));
 
     const columns = [
@@ -58,6 +58,12 @@ export const Transactions = () => {
                 </span>
             ),
             title: 'Status',
+        },
+        {
+            dataIndex: 'end_date',
+            render: date => moment(date).format('DD-MM-YYYY'),
+            title: 'Maturity Date',
+
         },
     ];
 

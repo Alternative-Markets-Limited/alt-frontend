@@ -14,7 +14,7 @@ import { About } from './About';
 import { KeyInformation } from './KeyInformation';
 import { GridGallery } from './Gallery';
 import {
-    getProperty, cleanProperty, createOrder, createOrderError
+    getProperty, cleanProperty, createOrder
 } from '../actions';
 import { getUserOrders } from '../../dashboard/actions';
 import { OrderModal } from './OrderModal';
@@ -27,8 +27,8 @@ export const SingleProperty = () => {
     const { token, user } = useSelector(state => state.auth);
     const { property } = useSelector(state => state.property);
     const { orders } = useSelector(state => state.dashboard);
-    const [order, setOrder] = useState({ price: 0, quantity: 0 });
-    const { price, quantity } = order;
+    const [order, setOrder] = useState({ price: 0, quantity: 0, yieldValue: null });
+    const { price, quantity, yieldValue } = order;
     const {
         email, phone, firstname, lastname,
     } = user;
@@ -50,7 +50,7 @@ export const SingleProperty = () => {
     }
 
     const {
-        id, name, image, category, min_yield, max_yield, gallery,
+        id, name, image, category, min_yield, max_yield, gallery, net_rental_yield,
         investment_population, about, video, location, holding_period, min_fraction_price, brochure,
     } = property;
 
@@ -74,6 +74,10 @@ export const SingleProperty = () => {
         setOrder({ ...order, price: min_fraction_price * value, quantity: value });
     };
 
+    const onSelectChange = value => {
+        setOrder({ ...order, yieldValue: parseFloat(value) });
+    };
+
     const callback = response => VerifyTransaction({
         SECKEY: process.env.REACT_APP_FLUTTER_SECK,
         live: process.env.NODE_ENV === 'production',
@@ -86,15 +90,14 @@ export const SingleProperty = () => {
         const amount = price;
 
         if ((chargeResponse === '00' || chargeResponse === '0') && (chargeAmount === amount) && (chargeCurrency === currency)) {
-            // Give Value and return to Success page
             const newOrder = {
                 fractions_qty: quantity,
                 price,
                 property_id: id,
+                yield_period: yieldValue,
             };
             return dispatch(createOrder({ history, newOrder, token }));
         }
-        // Dont Give Value and return to Failure page
         return history.push('/order-error');
     })
         .catch(error => {
@@ -122,6 +125,8 @@ export const SingleProperty = () => {
                     onChange={onChange}
                     price={price}
                     tokens={investment_population}
+                    yieldPeriod={net_rental_yield}
+                    yieldValue={yieldValue}
                     email={email}
                     phone={phone}
                     totalAmount={price}
@@ -129,6 +134,7 @@ export const SingleProperty = () => {
                     close={close}
                     firstname={firstname}
                     lastname={lastname}
+                    onSelectChange={onSelectChange}
                 />
                 <section>
                     <Hero name={name} image={image} category={category.name} min={min_yield} max={max_yield} tokens={investment_population} />
