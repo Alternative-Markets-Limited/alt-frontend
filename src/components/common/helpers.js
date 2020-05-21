@@ -40,7 +40,7 @@ export const filterArray = (array, filters) => {
 export const determineMaxFraction = (userProperties, propertyToBuy, maxFraction) => {
     // check if the user has bought property before
     const existingProperty = userProperties.find(
-        userProperty => String(userProperty.property_id) === String(propertyToBuy.id.toString())
+        userProperty => String(userProperty.property_id) === String(propertyToBuy.id)
     );
     // if user has property add up all the fractions quantity bought
     if (existingProperty) {

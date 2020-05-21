@@ -43,7 +43,7 @@ export const Home = () => {
                     Before making any decision in relation to the ALT Platform or ALTs you should read the
                         <a
                             href="https://res.cloudinary.com/altdotng/image/upload/v1587034817/alt_documents/ALT_pds_04-2020_xtu0r9.pdf"
-                            className="underline hover:underline hover:text-alt-blue"
+                            className="underline hover:underline"
                             target="_blank"
                             rel="noopener noreferrer"
                         >

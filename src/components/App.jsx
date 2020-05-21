@@ -42,7 +42,7 @@ const App = () => {
     const token = localStorage.getItem('token');
     const location = useLocation();
 
-    const transitions = useTransition(location, loc => loc.key, {
+    const transitions = useTransition(location, loc => loc.pathname, {
         enter: { opacity: 1, transform: 'translate(0%,0)' },
         from: { opacity: 0, transform: 'translate(100%,0)' },
         leave: { opacity: 0, transform: 'translate(-50%,0)' },
