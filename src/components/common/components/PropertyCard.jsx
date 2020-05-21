@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Typography } from 'antd';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import { formatMoney } from '../helpers';
 import { Spinner } from './Spinner';
 import { ButtonLink } from './ButtonLink';
@@ -17,7 +18,8 @@ export const PropertyCard = ({ properties }) => {
     return (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 g-justify-items-center">
             { properties.map(({
-                category, investment_population, name, about, min_fraction_price, min_yield, max_yield, image, id, order_id, fractions_qty, slug,
+                category, investment_population, name, about, min_fraction_price, net_rental_yield,
+                min_yield, max_yield, image, id, order_id, fractions_qty, slug, yield_period, end_date,
             }) => (
                 <div key={order_id || id} className="max-w-xs rounded-lg overflow-hidden shadow-lg border-t-4 border-alt-green">
                     <img className="w-full bg-gray-200 object-cover" src={image} alt={name} loading="lazy" width="320" />
@@ -36,7 +38,16 @@ export const PropertyCard = ({ properties }) => {
                             {about}
                         </Paragraph>
                         <div className="my-5">
-                            <ButtonLink name="Buy Now" route={`/properties/${slug}`} />
+                            {end_date
+                                ? (
+                                    <p className="text-gray-700 text-xs">
+                                        <span className="text-xs font-bold text-gray-700">
+                                            Maturity date:&nbsp;
+                                        </span>
+                                        {moment(end_date).format('ddd, MMM Do YYYY')}
+                                    </p>
+                                )
+                                : <ButtonLink name="Buy Now" route={`/properties/${slug}`} />}
                         </div>
                         <div className="border mb-2 opacity-50" />
                         <div className="flex flex-row justify-between items-center">
@@ -48,7 +59,9 @@ export const PropertyCard = ({ properties }) => {
                                 </p>
                             </div>
                             <div className="flex flex-col">
-                                <p className="font-semibold text-sm text-gray-800">{`${min_yield} - ${max_yield}%`}</p>
+                                {yield_period
+                                    ? <p className="font-semibold text-center text-sm text-gray-800">{`${net_rental_yield[yield_period]} %`}</p>
+                                    : <p className="font-semibold text-sm text-gray-800">{`${min_yield} - ${max_yield}%`}</p> }
                                 <p className="text-xs text-gray-600">Rental Yield</p>
                             </div>
                         </div>
@@ -64,6 +77,7 @@ PropertyCard.propTypes = {
     properties: PropTypes.arrayOf(PropTypes.shape({
         about: PropTypes.string.isRequired,
         category: PropTypes.shape().isRequired,
+        end_date: PropTypes.string,
         fractions_qty: PropTypes.number,
         id: PropTypes.number.isRequired,
         image: PropTypes.string.isRequired,
@@ -72,7 +86,9 @@ PropertyCard.propTypes = {
         min_fraction_price: PropTypes.number.isRequired,
         min_yield: PropTypes.number.isRequired,
         name: PropTypes.string.isRequired,
+        net_rental_yield: PropTypes.shape().isRequired,
         order_id: PropTypes.number,
+        yield_period: PropTypes.number,
     })),
 };
 

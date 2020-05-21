@@ -23,13 +23,14 @@ export const KeyInformation = ({
         },
         {
             key: 4,
-            text: `${holdingPeriod} ${holdingPeriod > 1 ? 'Years' : 'Year'}`,
+            text: holdingPeriod.length > 1 ? `${Math.min(...holdingPeriod)} - ${Math.max(...holdingPeriod)} Months` : `${holdingPeriod[0]} Months`,
             unit: 'holding period',
         },
     ];
+
     return (
         <div className="container px-2">
-            <div className="max-w-xs rounded-lg px-4 py-6 shadow-lg mx-auto">
+            <div className="max-w-xs rounded-lg px-4 py-6 shadow-lg mx-auto xl:mx-0">
                 <div className="container text-sm font-bold mb-3 flex flex-col items-center text-center">
                     <h3 className="my-1">Key Information</h3>
                     <div className="border border-alt-green w-12" />
@@ -55,7 +56,7 @@ export const KeyInformation = ({
 
 KeyInformation.propTypes = {
     brochure: PropTypes.string,
-    holdingPeriod: PropTypes.number.isRequired,
+    holdingPeriod: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     max: PropTypes.number.isRequired,
     min: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired,
