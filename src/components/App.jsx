@@ -38,14 +38,15 @@ import { getAuthUser, authState } from './login/actions';
 
 const App = () => {
     const dispatch = useDispatch();
+    const { properties } = useSelector(state => state.home);
     const { isAuthenticated } = useSelector(state => state.auth);
     const token = localStorage.getItem('token');
     const location = useLocation();
 
     const transitions = useTransition(location, loc => loc.pathname, {
-        enter: { opacity: 1, transform: 'translate(0%,0)' },
-        from: { opacity: 0, transform: 'translate(100%,0)' },
-        leave: { opacity: 0, transform: 'translate(-50%,0)' },
+        enter: { opacity: 1 },
+        from: { opacity: 0 },
+        leave: { opacity: 0 },
     });
 
     useEffect(() => {
@@ -57,8 +58,10 @@ const App = () => {
     }, [token, dispatch]);
 
     useEffect(() => {
-        dispatch(getProperties());
-    }, [dispatch]);
+        if (!properties) {
+            dispatch(getProperties());
+        }
+    }, [dispatch, properties]);
 
     if (isAuthenticated === null) {
         return <Spinner />;

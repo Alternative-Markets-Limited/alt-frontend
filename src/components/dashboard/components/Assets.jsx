@@ -15,8 +15,10 @@ export const Assets = () => {
     const { orders } = useSelector(state => state.dashboard);
 
     useEffect(() => {
-        dispatch(getUserOrders(token));
-    }, [dispatch, token]);
+        if (!orders) {
+            dispatch(getUserOrders(token));
+        }
+    }, [dispatch, token, orders]);
 
     if (!orders || !properties) {
         return <Spinner />;
