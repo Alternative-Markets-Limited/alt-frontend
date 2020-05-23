@@ -21,3 +21,4 @@ export * from './AboutUsPage';
 export * from './PostsPage';
 export * from './SinglePostPage';
 export * from './ReferralPage';
+export * from './AccountSettingsPage';

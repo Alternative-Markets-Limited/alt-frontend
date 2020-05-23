@@ -1,4 +1,14 @@
 export const formRules = {
+    accountNumberRules: [
+        {
+            message: 'Please input your Account Number',
+            required: true,
+        },
+        {
+            message: 'Account Number format is invalid',
+            pattern: /^[0-9]*$/,
+        },
+    ],
     addressRules: [
         {
             message: 'Please input your Address!',
@@ -8,6 +18,12 @@ export const formRules = {
     agreementRules: [
         // eslint-disable-next-line prefer-promise-reject-errors
         { validator: (_, value) => (value ? Promise.resolve() : Promise.reject('Please accept the product disclosure agreement ')) },
+    ],
+    bankNameRules: [
+        {
+            message: 'Please select Bank name',
+            required: true,
+        },
     ],
     bvnRules: [
         {
@@ -70,6 +86,16 @@ export const formRules = {
         {
             message: 'Last name format is invalid',
             pattern: /^[a-zA-Z]+$/,
+        },
+    ],
+    occupationRules: [
+        {
+            max: 255,
+            message: 'Occupation cannot be more than 255 characters',
+        },
+        {
+            message: 'Occupation must be a valid string',
+            type: 'string',
         },
     ],
     passwordRules: [

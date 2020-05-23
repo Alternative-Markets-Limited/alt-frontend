@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player';
 import PropTypes from 'prop-types';
 
 export const About = ({
-    about, video, location, showModal,
+    about, video, location, showModal, facility,
 }) => (
     <div className="container px-2">
         <div className="text-xl md:text-2xl lg:text-3xl font-bold flex flex-col my-3">
@@ -15,7 +15,17 @@ export const About = ({
             <div className="w-full lg:w-3/5 ">
                 <div>
                     <p className="text-base">{about}</p>
-                    <p className="text base my-3">{`Location: ${location}`}</p>
+                    <p className="text base my-3">
+                        <span className="font-bold">Location: </span>
+                        {location}
+                    </p>
+                    {facility && (
+                        <p className="my-2">
+                            <span className="font-bold">Facilities: </span>
+                            {facility.join(', ')}
+                            .
+                        </p>
+                    )}
                     <Button type="primary" className="btn-primary w-full md:max-w-sm lg:max-w-xs my-3" onClick={showModal}>Invest</Button>
                 </div>
             </div>
@@ -38,11 +48,13 @@ export const About = ({
 
 About.propTypes = {
     about: PropTypes.string.isRequired,
+    facility: PropTypes.arrayOf(PropTypes.string),
     location: PropTypes.string.isRequired,
     showModal: PropTypes.func.isRequired,
     video: PropTypes.string,
 };
 
 About.defaultProps = {
+    facility: null,
     video: null,
 };
