@@ -63,3 +63,20 @@ export const determineMaxFraction = (userProperties, propertyToBuy, maxFraction)
     return maxFraction;
 };
 
+/**
+ * Filters an array of objects by custom predicates.
+ *
+ * @param  {Object}  state: the object to compare with
+ * @param  {Object} formValues: the object to compare
+ * @return {Object}
+ */
+export const detectChangedFields = (state, formValues) => {
+    const changedData = {};
+    // eslint-disable-next-line no-restricted-syntax
+    for (const [key, value] of Object.entries(formValues)) {
+        if (state[key] !== formValues[key]) {
+            changedData[key] = value;
+        }
+    }
+    return changedData;
+};

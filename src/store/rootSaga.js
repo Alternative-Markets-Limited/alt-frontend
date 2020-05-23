@@ -6,7 +6,9 @@ import {
     watchLoginUserSaga, watchGetAuthUserSaga,
     watchForgotPasswordSaga, watchResetPasswordSaga, watchLogoutUserSaga
 } from '../components/login';
-import { watchCreateProfileSaga, watchVerifyBvnSaga } from '../components/profile';
+import {
+    watchCreateProfileSaga, watchVerifyBvnSaga, watchUpdateProfileSaga, watchUpdateProfileImageSaga, watchGetBanksSaga
+} from '../components/profile';
 import { watchGetGetUserOrdersSaga } from '../components/dashboard';
 import { watchGetPropertySaga, watchCreateOrderSaga } from '../components/properties';
 import { watchGetPostsSaga, watchGetPostSaga } from '../components/blog';
@@ -28,5 +30,8 @@ export default function* rootSaga() {
         call(watchVerifyBvnSaga),
         call(watchGetPostsSaga),
         call(watchGetPostSaga),
+        call(watchUpdateProfileSaga),
+        call(watchUpdateProfileImageSaga),
+        call(watchGetBanksSaga),
     ]);
 }

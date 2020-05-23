@@ -50,7 +50,7 @@ export const SingleProperty = () => {
     }
 
     const {
-        id, name, image, category, min_yield, max_yield, gallery, net_rental_yield,
+        id, name, image, category, min_yield, max_yield, gallery, net_rental_yield, facility,
         investment_population, about, video, location, holding_period, min_fraction_price, brochure,
     } = property;
 
@@ -140,7 +140,7 @@ export const SingleProperty = () => {
                     <Hero name={name} image={image} category={category.name} min={min_yield} max={max_yield} tokens={investment_population} />
                 </section>
                 <section>
-                    <About about={about} video={video} location={location} showModal={showModal} />
+                    <About about={about} video={video} location={location} showModal={showModal} facility={facility} />
                 </section>
                 <section className="my-10">
                     <div className="container grid grid-cols-3 gap-4">
