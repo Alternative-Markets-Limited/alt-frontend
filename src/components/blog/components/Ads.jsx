@@ -12,7 +12,16 @@ export const Ads = () => {
     if (!properties.length) {
         return <h3 className="text-center text-base md:text-xl text-black font-semibold">No property on sale</h3>;
     }
-    const { id, name, image } = properties[0];
+
+    const determineIndex = () => {
+        let index = 0;
+        if (properties.length > 1) {
+            index = Math.floor(Math.random() * properties.length);
+        }
+        return index;
+    };
+
+    const { id, name, image } = properties[determineIndex()];
 
     return (
         <>

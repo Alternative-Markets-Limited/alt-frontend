@@ -9,5 +9,6 @@
 /tests/performance/**
 /tmp/**
 next.config.js
+/public/js/**
 
 # Add any other files or folders that you want eslint to ignore

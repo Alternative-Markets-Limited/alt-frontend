@@ -27,7 +27,7 @@ export const Recent = () => {
         ))
     );
 
-    return (
+    return posts.length > 1 && (
         <div className="my-5">
             <p className="uppercase font-bold text-gray-900">Recent Posts</p>
             {renderPosts()}

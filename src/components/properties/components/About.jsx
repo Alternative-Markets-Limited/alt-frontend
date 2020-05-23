@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player';
 import PropTypes from 'prop-types';
 
 export const About = ({
-    about, video, location, showModal,
+    about, video, location, showModal, facility,
 }) => (
     <div className="container px-2">
         <div className="text-xl md:text-2xl lg:text-3xl font-bold flex flex-col my-3">
@@ -15,12 +15,22 @@ export const About = ({
             <div className="w-full lg:w-3/5 ">
                 <div>
                     <p className="text-base">{about}</p>
-                    <p className="text base my-3">{`Location: ${location}`}</p>
+                    <p className="text base my-3">
+                        <span className="font-bold">Location: </span>
+                        {location}
+                    </p>
+                    {facility && (
+                        <p className="my-2">
+                            <span className="font-bold">Facilities: </span>
+                            {facility.join(', ')}
+                            .
+                        </p>
+                    )}
                     <Button type="primary" className="btn-primary w-full md:max-w-sm lg:max-w-xs my-3" onClick={showModal}>Invest</Button>
                 </div>
             </div>
-            <div className="w-full relative pt-64 my-5 lg:w-1/3">
-                {!video ? <h3>This property has no video</h3> : (
+            <div className={`w-full relative ${video && 'pt-64'} my-5 lg:w-1/3`}>
+                {!video ? <h3 className="font-bold text-base text-gray-900">This property has no video</h3> : (
                     <ReactPlayer
                         className="absolute top-0 left-0"
                         width="100%"
@@ -38,11 +48,13 @@ export const About = ({
 
 About.propTypes = {
     about: PropTypes.string.isRequired,
+    facility: PropTypes.arrayOf(PropTypes.string),
     location: PropTypes.string.isRequired,
     showModal: PropTypes.func.isRequired,
     video: PropTypes.string,
 };
 
 About.defaultProps = {
+    facility: null,
     video: null,
 };

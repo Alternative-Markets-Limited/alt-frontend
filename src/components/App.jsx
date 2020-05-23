@@ -29,7 +29,8 @@ import {
     AboutUsPage,
     SinglePostPage,
     PostsPage,
-    ReferralPage
+    ReferralPage,
+    AccountSettingsPage
 } from './pages/components';
 import { Header } from './layouts/components';
 import { PrivateRoute, Spinner, AuthRoute } from './common/components';
@@ -38,14 +39,15 @@ import { getAuthUser, authState } from './login/actions';
 
 const App = () => {
     const dispatch = useDispatch();
+    const { properties } = useSelector(state => state.home);
     const { isAuthenticated } = useSelector(state => state.auth);
     const token = localStorage.getItem('token');
     const location = useLocation();
 
-    const transitions = useTransition(location, loc => loc.key, {
-        enter: { opacity: 1, transform: 'translate(0%,0)' },
-        from: { opacity: 0, transform: 'translate(100%,0)' },
-        leave: { opacity: 0, transform: 'translate(-50%,0)' },
+    const transitions = useTransition(location, loc => loc.pathname, {
+        enter: { opacity: 1 },
+        from: { opacity: 0 },
+        leave: { opacity: 0 },
     });
 
     useEffect(() => {
@@ -57,8 +59,10 @@ const App = () => {
     }, [token, dispatch]);
 
     useEffect(() => {
-        dispatch(getProperties());
-    }, [dispatch]);
+        if (!properties) {
+            dispatch(getProperties());
+        }
+    }, [dispatch, properties]);
 
     if (isAuthenticated === null) {
         return <Spinner />;
@@ -90,10 +94,11 @@ const App = () => {
                         <PrivateRoute exact path="/order-error" component={OrderErrorPage} />
                         <PrivateRoute exact path="/create-profile" component={CreateProfilePage} />
                         <PrivateRoute exact path="/dashboard" component={DashboardPage} />
-                        <PrivateRoute exact path="/properties/:id" component={SinglePropertyPage} />
+                        <PrivateRoute exact path="/properties/:slug" component={SinglePropertyPage} />
                         <PrivateRoute exact path="/assets" component={AssetsPage} />
                         <PrivateRoute exact path="/transactions" component={TransactionsPage} />
                         <PrivateRoute exact path="/returns" component={ReturnsPage} />
+                        <PrivateRoute exact path="/account-settings" component={AccountSettingsPage} />
                         <Route component={Error404Page} />
                     </Switch>
                 </animated.div>

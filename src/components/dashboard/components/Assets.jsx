@@ -15,13 +15,19 @@ export const Assets = () => {
     const { orders } = useSelector(state => state.dashboard);
 
     useEffect(() => {
-        dispatch(getUserOrders(token));
-    }, [dispatch, token]);
+        if (!orders) {
+            dispatch(getUserOrders(token));
+        }
+    }, [dispatch, token, orders]);
 
     if (!orders || !properties) {
         return <Spinner />;
     }
-    const propertiesArray = orders.map(({ property, id, fractions_qty }) => ({ fractions_qty, order_id: id, ...property }));
+    const propertiesArray = orders.map(({
+        property, id, fractions_qty, yield_period, end_date,
+    }) => ({
+        end_date, fractions_qty, order_id: id, ...property, yield_period,
+    }));
 
     if (!properties.length) {
         return <h3 className="text-center text-base md:text-xl text-black font-semibold">There are no properties available at the moment</h3>;
