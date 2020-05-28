@@ -1,0 +1,47 @@
+runtime: nodejs
+env: flex
+
+service: frontend
+
+automatic_scaling:
+  min_num_instances: 1
+  max_num_instances: 2
+  cool_down_period_sec: 180
+  cpu_utilization:
+    target_utilization: 0.6
+
+resources:
+  cpu: 2
+  memory_gb: 2.5
+  disk_size_gb: 10
+  volumes:
+    - name: ramdisk1
+      volume_type: tmpfs
+      size_gb: 0.5
+
+env_variables:
+  REACT_ENVIRONMENT: production
+  REACT_APP_NAME: Alt Markets Limited
+  REACT_APP_WEBSITE: https://frontend-dot-altappng.uc.r.appspot.com
+  REACT_APP_BASE_URL: https://altappng.uc.r.appspot.com/api/v1
+  REACT_APP_PAYSTACK_BASE_URL: https://api.paystack.co
+  REACT_APP_FLUTTER_BASE_URL: https://api.ravepay.co/v2
+  REACT_APP_FLUTTER_PUBK: FLWPUBK_TEST-62738188c35db786b68001dacf36b13c-X
+  REACT_APP_FLUTTER_SECK: FLWSECK_TEST-45c408de1313018f4ddec929de174ba8-X
+  REACT_APP_FLUTTERWAVE_ENCRYPTION_KEY: FLWSECK_TEST95aa7f44e2b9
+  REACT_APP_PAYSTACK_PUBK: pk_live_167b047e356e46c93233b47ee6e5edee8c43ed38
+  REACT_APP_PAYSTACK_SECK: sk_live_578cf3f59f23934383c8a12d57e8cebfb1873bb9
+  REACT_APP_VERIFIED_NG_BASE_URL: https://app.verified.ng
+  REACT_APP_VERIFIED_NG_API_KEY: $qoaI4kV8Ajt4sMv
+  REACT_APP_VERIFIED_NG_USER_ID: 1586866619757
+  REACT_APP_CONTENTFUL_SPACE: f2z7jsuqi1tq
+  REACT_APP_CONTENTFUL_TOKEN: 3-wKDRZODWZ2NRhrBX0tlikMQkfA-TVBqg3HJirYDVU
+  REACT_APP_MOCK: https://www.mocky.io/v2/5cc8019d300000980a055e76
+
+handlers:
+  - url: /
+    static_files: build/index.html
+    upload: build/index.html
+
+  - url: /
+    static_dir: build

@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://altappng.herokuapp.com/",
-  "engines": {
-    "node": "13.2.0",
-    "npm": "6.13.1"
-  },
   "dependencies": {
     "@ant-design/icons": "^4.0.3",
     "@contentful/rich-text-react-renderer": "^13.4.0",
@@ -53,9 +49,12 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "prestart": "tailwind build ./src/css/index.tailwind.css -c ./tailwind.config.js -o ./src/css/index.css",
+    "predev": "tailwind build ./src/css/index.tailwind.css -c ./tailwind.config.js -o ./src/css/index.css",
     "prebuild": "tailwind build ./src/css/index.tailwind.css -c ./tailwind.config.js -o ./src/css/index.css",
-    "start": "react-app-rewired start",
+    "dev": "react-app-rewired start",
+    "prestart": "npm install -g serve",
+    "start": "serve -s build",
+    "postinstall": "react-app-rewired build",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
