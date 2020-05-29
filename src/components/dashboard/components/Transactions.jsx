@@ -15,10 +15,8 @@ export const Transactions = () => {
     const { orders, loading } = useSelector(state => state.dashboard);
 
     useEffect(() => {
-        if (!orders) {
-            dispatch(getUserOrders(token));
-        }
-    }, [dispatch, token, orders]);
+        dispatch(getUserOrders(token));
+    }, [dispatch, token]);
 
     if (!orders) {
         return <Spinner />;

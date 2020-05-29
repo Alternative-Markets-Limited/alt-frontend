@@ -30,7 +30,9 @@ import {
     SinglePostPage,
     PostsPage,
     ReferralPage,
-    AccountSettingsPage
+    AccountSettingsPage,
+    InvoicesPage,
+    SingleInvoicePage
 } from './pages/components';
 import { Header } from './layouts/components';
 import { PrivateRoute, Spinner, AuthRoute } from './common/components';
@@ -97,6 +99,8 @@ const App = () => {
                         <PrivateRoute exact path="/properties/:slug" component={SinglePropertyPage} />
                         <PrivateRoute exact path="/assets" component={AssetsPage} />
                         <PrivateRoute exact path="/transactions" component={TransactionsPage} />
+                        <PrivateRoute exact path="/invoices" component={InvoicesPage} />
+                        <PrivateRoute exact path="/invoices/:id" component={SingleInvoicePage} />
                         <PrivateRoute exact path="/returns" component={ReturnsPage} />
                         <PrivateRoute exact path="/account-settings" component={AccountSettingsPage} />
                         <Route component={Error404Page} />

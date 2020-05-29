@@ -15,18 +15,16 @@ export const Assets = () => {
     const { orders } = useSelector(state => state.dashboard);
 
     useEffect(() => {
-        if (!orders) {
-            dispatch(getUserOrders(token));
-        }
-    }, [dispatch, token, orders]);
+        dispatch(getUserOrders(token));
+    }, [dispatch, token]);
 
     if (!orders || !properties) {
         return <Spinner />;
     }
     const propertiesArray = orders.map(({
-        property, id, fractions_qty, yield_period, end_date,
+        property, id, fractions_qty, yield_period, end_date, price,
     }) => ({
-        end_date, fractions_qty, order_id: id, ...property, yield_period,
+        end_date, fractions_qty, order_id: id, ...property, price, yield_period,
     }));
 
     if (!properties.length) {
