@@ -9,7 +9,7 @@ import {
 import {
     watchCreateProfileSaga, watchVerifyBvnSaga, watchUpdateProfileSaga, watchUpdateProfileImageSaga, watchGetBanksSaga
 } from '../components/profile';
-import { watchGetGetUserOrdersSaga } from '../components/dashboard';
+import { watchGetGetUserOrdersSaga, watchGetUserInvoiceSaga, watchGetInvoiceSaga } from '../components/dashboard';
 import { watchGetPropertySaga, watchCreateOrderSaga } from '../components/properties';
 import { watchGetPostsSaga, watchGetPostSaga } from '../components/blog';
 
@@ -33,5 +33,7 @@ export default function* rootSaga() {
         call(watchUpdateProfileSaga),
         call(watchUpdateProfileImageSaga),
         call(watchGetBanksSaga),
+        call(watchGetUserInvoiceSaga),
+        call(watchGetInvoiceSaga),
     ]);
 }

@@ -7,21 +7,24 @@ import assets from '../../../assets/images/assets.png';
 import property from '../../../assets/images/properties.png';
 import returns from '../../../assets/images/returns.png';
 import transaction from '../../../assets/images/transaction.png';
-import { getUserOrders } from '../actions';
+import file from '../../../assets/images/file.png';
+import { getUserOrders, getUserInvoices } from '../actions';
 
 export const Dashboard = () => {
     const dispatch = useDispatch();
     const { token } = useSelector(state => state.auth);
     const { properties } = useSelector(state => state.home);
-    const { orders } = useSelector(state => state.dashboard);
+    const { orders, invoices } = useSelector(state => state.dashboard);
 
     useEffect(() => {
-        if (!orders) {
-            dispatch(getUserOrders(token));
-        }
-    }, [dispatch, token, orders]);
+        dispatch(getUserOrders(token));
+    }, [dispatch, token]);
 
-    if (!orders) {
+    useEffect(() => {
+        dispatch(getUserInvoices(token));
+    }, [dispatch, token]);
+
+    if (!orders || !invoices) {
         return <Spinner />;
     }
 
@@ -62,6 +65,15 @@ export const Dashboard = () => {
             route: '/transactions',
             text: 'Transactions',
         },
+        {
+            color: 'bg-blue-600',
+            image: file,
+            key: 5,
+            name: 'My Invoices',
+            number: invoices.length,
+            route: '/invoices',
+            text: 'Invoices',
+        },
     ];
 
     return (
@@ -71,7 +83,7 @@ export const Dashboard = () => {
                     <MiniHeader name="My Dashboard" icon={faUser} />
                 </section>
                 <section className="container px-2 my-32">
-                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 g-justify-items-center">
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 g-justify-items-center">
                         {stats.map(({
                             key, color, name, number, route, text, image,
                         }) => (

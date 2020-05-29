@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { message } from 'antd';
-import { VerifyTransaction } from 'react-flutterwave-rave';
 import { Helmet } from 'react-helmet';
 import { Footer, SecondaryHeader } from '../../layouts/components';
 import { Spinner } from '../../common/components';
@@ -24,14 +23,12 @@ export const SingleProperty = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const { slug } = useParams();
-    const { token, user } = useSelector(state => state.auth);
+    const { token } = useSelector(state => state.auth);
     const { property } = useSelector(state => state.property);
     const { orders } = useSelector(state => state.dashboard);
     const [order, setOrder] = useState({ price: 0, quantity: 0, yieldValue: null });
     const { price, quantity, yieldValue } = order;
-    const {
-        email, phone, firstname, lastname,
-    } = user;
+
     useEffect(() => {
         dispatch(getProperty({ slug, token }));
         return () => {
@@ -40,10 +37,8 @@ export const SingleProperty = () => {
     }, [dispatch, slug, token]);
 
     useEffect(() => {
-        if (!orders) {
-            dispatch(getUserOrders(token));
-        }
-    }, [dispatch, token, orders]);
+        dispatch(getUserOrders(token));
+    }, [dispatch, token]);
 
     if (!property || !orders) {
         return <Spinner />;
@@ -78,34 +73,15 @@ export const SingleProperty = () => {
         setOrder({ ...order, yieldValue: parseFloat(value) });
     };
 
-    const callback = response => VerifyTransaction({
-        SECKEY: process.env.REACT_APP_FLUTTER_SECK,
-        live: process.env.NODE_ENV === 'production',
-        txref: response.tx.txRef,
-    }).then(resp => {
-        const { chargeResponse } = resp.data.data.flwMeta;
-        const chargeAmount = resp.data.data.amount;
-        const chargeCurrency = resp.data.data.transaction_currency;
-        const currency = 'NGN';
-        const amount = price;
-
-        if ((chargeResponse === '00' || chargeResponse === '0') && (chargeAmount === amount) && (chargeCurrency === currency)) {
-            const newOrder = {
-                fractions_qty: quantity,
-                price,
-                property_id: id,
-                yield_period: yieldValue,
-            };
-            return dispatch(createOrder({ history, newOrder, token }));
-        }
-        return history.push('/order-error');
-    })
-        .catch(error => {
-            history.push('/order-error');
-            return error;
-        });
-
-    const close = () => message.info('Payment Modal Closed');
+    const handleSubmit = () => {
+        const newOrder = {
+            fractions_qty: quantity,
+            price,
+            property_id: id,
+            yield_period: yieldValue,
+        };
+        return dispatch(createOrder({ history, newOrder, token }));
+    };
 
     return (
         <>
@@ -127,14 +103,9 @@ export const SingleProperty = () => {
                     tokens={investment_population}
                     yieldPeriod={net_rental_yield}
                     yieldValue={yieldValue}
-                    email={email}
-                    phone={phone}
                     totalAmount={price}
-                    callback={callback}
-                    close={close}
-                    firstname={firstname}
-                    lastname={lastname}
                     onSelectChange={onSelectChange}
+                    handleSubmit={handleSubmit}
                 />
                 <section>
                     <Hero name={name} image={image} category={category.name} min={min_yield} max={max_yield} tokens={investment_population} />

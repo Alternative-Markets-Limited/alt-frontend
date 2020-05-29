@@ -18,7 +18,7 @@ export const PropertyCard = ({ properties }) => {
     return (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 g-justify-items-center">
             { properties.map(({
-                category, investment_population, name, about, min_fraction_price, net_rental_yield,
+                category, investment_population, name, about, min_fraction_price, net_rental_yield, price,
                 min_yield, max_yield, image, id, order_id, fractions_qty, slug, yield_period, end_date,
             }) => (
                 <div key={order_id || id} className="max-w-xs rounded-lg overflow-hidden shadow-lg border-t-4 border-alt-green">
@@ -53,10 +53,17 @@ export const PropertyCard = ({ properties }) => {
                         <div className="flex flex-row justify-between items-center">
                             <div className="flex flex-row">
                                 <p className="font-bold text-xs text-gray-600">₦</p>
-                                <p className="font-bold text-black text-xl">
-                                    {formatMoney(min_fraction_price)}
-                                    <span className="text-xs text-gray-600 font-normal"> /fraction</span>
-                                </p>
+                                {price ? (
+                                    <p className="font-bold text-black text-xl">
+                                        {formatMoney(price)}
+                                    </p>
+                                ) : (
+                                    <p className="font-bold text-black text-xl">
+                                        { formatMoney(min_fraction_price) }
+                                        <span className="text-xs text-gray-600 font-normal"> /fraction</span>
+                                    </p>
+                                ) }
+
                             </div>
                             <div className="flex flex-col">
                                 {yield_period
