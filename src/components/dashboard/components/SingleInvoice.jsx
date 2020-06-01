@@ -90,8 +90,8 @@ export const SingleInvoice = () => {
                         {!status && (
                             <div className="mb-8">
                                 <p className="text-base">
-                                Complete your payment to the account number below and send the evidence of payment with the invoice number to
-                                    <a href="mailto:hello@alt.ng"> hello@alt.ng</a>
+                                    Complete your payment to the account number below and send the evidence of payment with the invoice number to
+                                    <a href={`mailto:hello@alt.ng?subject=Invoice Number ${invoice_number}`}> hello@alt.ng</a>
                                 </p>
                                 <div className="my-4">
                                     {bankDetails.map(({ key, title, value }) => (
