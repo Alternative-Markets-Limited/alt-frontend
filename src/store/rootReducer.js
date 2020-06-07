@@ -7,8 +7,10 @@ import profileReducer from '../components/profile/reducer';
 import dashboardReducer from '../components/dashboard/reducer';
 import propertyReducer from '../components/properties/reducer';
 import blogReducer from '../components/blog/reducer';
+import adminDashboardReducer from '../components/admin/reducer';
 
 export default combineReducers({
+    adminDashboard: adminDashboardReducer,
     auth: authReducer,
     blog: blogReducer,
     dashboard: dashboardReducer,

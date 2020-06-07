@@ -9,3 +9,4 @@ export * from './AuthRoute';
 export * from './PrivateRoute';
 export * from './AuthMenu';
 export * from './BvnRoute';
+export * from './AdminRoute';

@@ -32,7 +32,8 @@ import {
     ReferralPage,
     AccountSettingsPage,
     InvoicesPage,
-    SingleInvoicePage
+    SingleInvoicePage,
+    AdminDashboardPage
 } from './pages/components';
 import { Header } from './layouts/components';
 import { PrivateRoute, Spinner, AuthRoute } from './common/components';
@@ -103,6 +104,7 @@ const App = () => {
                         <PrivateRoute exact path="/invoices/:id" component={SingleInvoicePage} />
                         <PrivateRoute exact path="/returns" component={ReturnsPage} />
                         <PrivateRoute exact path="/account-settings" component={AccountSettingsPage} />
+                        <PrivateRoute exact path="/admin/dashboard" component={AdminDashboardPage} />
                         <Route component={Error404Page} />
                     </Switch>
                 </animated.div>

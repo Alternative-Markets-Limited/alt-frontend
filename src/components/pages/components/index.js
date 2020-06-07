@@ -24,3 +24,4 @@ export * from './ReferralPage';
 export * from './AccountSettingsPage';
 export * from './InvoicesPage';
 export * from './SingleInvoicePage';
+export * from './AdminDashboardPage';
