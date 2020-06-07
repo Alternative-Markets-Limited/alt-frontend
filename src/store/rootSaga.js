@@ -12,6 +12,9 @@ import {
 import { watchGetGetUserOrdersSaga, watchGetUserInvoiceSaga, watchGetInvoiceSaga } from '../components/dashboard';
 import { watchGetPropertySaga, watchCreateOrderSaga } from '../components/properties';
 import { watchGetPostsSaga, watchGetPostSaga } from '../components/blog';
+import {
+    watchGetAllOrdersSaga, watchGetAllInvoiceSaga, watchGetAllUsersSaga, watchAdminCreateOrderSaga, watchDeleteInvoiceSaga
+} from '../components/admin';
 
 export default function* rootSaga() {
     yield all([
@@ -35,5 +38,10 @@ export default function* rootSaga() {
         call(watchGetBanksSaga),
         call(watchGetUserInvoiceSaga),
         call(watchGetInvoiceSaga),
+        call(watchGetAllOrdersSaga),
+        call(watchGetAllInvoiceSaga),
+        call(watchGetAllUsersSaga),
+        call(watchAdminCreateOrderSaga),
+        call(watchDeleteInvoiceSaga),
     ]);
 }
