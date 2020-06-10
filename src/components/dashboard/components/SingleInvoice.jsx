@@ -57,8 +57,8 @@ export const SingleInvoice = () => {
 
     const bankDetails = [
         { key: 1, title: 'Account Name', value: 'Alternative Markets Limited' },
-        { key: 2, title: 'Bank Name', value: 'Guarantee Trust Bank' },
-        { key: 3, title: 'Account Number', value: '343475849534' },
+        { key: 2, title: 'Bank Name', value: 'Zenith Bank' },
+        { key: 3, title: 'Account Number', value: '1017303698' },
     ];
 
     return (
