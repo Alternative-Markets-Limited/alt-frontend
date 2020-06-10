@@ -57,7 +57,6 @@
     "dev": "react-app-rewired start",
     "prestart": "npm install -g serve",
     "start": "serve -s build",
-    "postinstall": "react-app-rewired build",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
