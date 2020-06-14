@@ -9,7 +9,7 @@ export const OurWhy = () => (
             <img src={ourWhy} alt="buildings" className="w-full h-full" />
         </div>
         <div>
-            <h3 className="uppercase font-bold text-center my-3">A fration for everyone</h3>
+            <h3 className="uppercase font-bold text-center my-3">A fraction for everyone</h3>
             <p className="text-justify tracking-tight">
                 Globally, access to real estate investments is limited due to the large amounts of capital required;
                 prospective investors have to save up for extended periods of time or take loans to gain access to the market.
