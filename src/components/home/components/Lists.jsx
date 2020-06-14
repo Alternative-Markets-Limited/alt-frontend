@@ -4,7 +4,7 @@ import checkMark from '../../../assets/images/check-mark.svg';
 const lists = [
     { key: 1, title: 'Low Capital Access' },
     { key: 2, title: 'Transparent Channels' },
-    { key: 3, title: 'Smart and Hassel Free Transactions' },
+    { key: 3, title: 'Smart and Hassle Free Transactions' },
     { key: 4, title: 'Relatively Low Risk Investment' },
     { key: 5, title: 'High Returns' },
     { key: 6, title: 'Asset Liquidity' },
