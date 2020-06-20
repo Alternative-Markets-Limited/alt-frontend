@@ -24,15 +24,15 @@ export const OrderModal = ({
                 onCancel={handleCancel}
                 footer={false}
             >
-                <p>How many fractions would you like to invest in?</p>
-                <small className="italic text-gray-500">{`(You can only purchase ${maxFraction} fractions on this property)`}</small>
+                <p>How many alts would you like to invest in?</p>
+                <small className="italic text-gray-500">{`(You can only purchase ${maxFraction} alts on this property)`}</small>
                 <InputNumber
                     min={1}
                     max={maxFraction}
                     onChange={onChange}
                     type="number"
                     className="input-form w-full my-3"
-                    placeholder="Number of fractions"
+                    placeholder="Number of alts"
                 />
                 <Select
                     className="input-form w-full mb-3"

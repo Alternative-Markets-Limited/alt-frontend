@@ -44,7 +44,7 @@ export const Ads = () => {
             >
                 <div className="flex flex-col items-center">
                     <h3 className="text-center text-white text-3xl mt-2 mb-1">{name}</h3>
-                    <p className="text-center text-white text-sm mb-4">Limited Fractions Availabe</p>
+                    <p className="text-center text-white text-sm mb-4">Limited Alts Availabe</p>
                     <div className="max-w-sm mx-auto mt-4">
                         <ButtonLink name="Get Started" route={`/properties/${id}`} className="w-2/3" />
                     </div>
