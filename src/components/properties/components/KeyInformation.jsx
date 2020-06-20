@@ -14,12 +14,12 @@ export const KeyInformation = ({
         {
             key: 2,
             text: tokens,
-            unit: 'available fractions',
+            unit: 'available alts',
         },
         {
             key: 3,
             text: `₦${formatMoney(price)}`,
-            unit: 'per fractions',
+            unit: 'per alts',
         },
         {
             key: 4,

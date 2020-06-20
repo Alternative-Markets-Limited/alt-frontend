@@ -44,6 +44,12 @@ body {
   top: 22px;
 }
 
+@media screen and (min-width: 1024px) {
+  .bm-burger-button  {
+    right: 140px;
+  }
+}
+
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
   background: #373a47;

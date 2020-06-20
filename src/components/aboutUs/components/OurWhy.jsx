@@ -21,7 +21,7 @@ export const OurWhy = () => (
                 By providing a solution to this problem, we are fostering economic growth,
                 helping middle and low income earners make wealth and have other opportunities for improving their lives.
                 Our solution offers a cheap way to invest in real estate, users get value from investing, trading their investment
-                fractions via the platform and earning returns after the holding period.
+                alts via the platform and earning returns after the holding period.
             </p>
         </div>
     </div>
