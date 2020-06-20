@@ -4,6 +4,8 @@ import { MainLayout } from './MainLayout';
 import { AnalyticsDashboard } from './AnalyticsDashboard';
 import { OrdersDashboard } from './OrdersDashboard';
 import { AllUsersDashboard } from './AllUsersDashboard';
+import { AllProperties } from './AllProperties';
+import { AddNewProperty } from './AddNewProperty';
 import { getAllOrders, getAllInvoice, getAllUsers } from '../actions';
 
 export const Dashboard = () => {
@@ -27,6 +29,10 @@ export const Dashboard = () => {
             return <AnalyticsDashboard />;
         case KEY[1]:
             return <OrdersDashboard />;
+        case KEY[4]:
+            return <AllProperties />;
+        case KEY[5]:
+            return <AddNewProperty />;
         case KEY[8]:
             return <AllUsersDashboard />;
         default:
