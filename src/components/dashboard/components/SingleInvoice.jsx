@@ -37,7 +37,7 @@ export const SingleInvoice = () => {
         },
         {
             dataIndex: 'qty',
-            title: 'Fractions Quantity',
+            title: 'Alts Quantity',
         },
         {
             dataIndex: 'price',
