@@ -15,7 +15,7 @@ const cards = [
     {
         alt: 'shake',
         description: `You make your purchase from the ALTs available on the platform. 
-        This acquisition transfers to you ownership of tokens for a holding period.`,
+        This acquisition transfers to you ownership of alts for a holding period.`,
         image: shake,
         key: 2,
     },

@@ -41,7 +41,7 @@ export const Transactions = () => {
         },
         {
             dataIndex: 'fractions_qty',
-            title: 'Total Fractions',
+            title: 'Total Alts',
         },
         {
             dataIndex: 'price',
