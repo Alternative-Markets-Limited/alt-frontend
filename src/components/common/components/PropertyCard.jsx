@@ -16,12 +16,12 @@ export const PropertyCard = ({ properties }) => {
     }
 
     return (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 g-justify-items-center">
+        <div className="flex flex-wrap justify-center -mt-4">
             { properties.map(({
                 category, investment_population, name, about, min_fraction_price, net_rental_yield, price,
                 min_yield, max_yield, image, id, order_id, fractions_qty, slug, yield_period, end_date,
             }) => (
-                <div key={order_id || id} className="max-w-xs rounded-lg overflow-hidden shadow-lg border-t-4 border-alt-green">
+                <div key={order_id || id} className="max-w-xs rounded-lg overflow-hidden shadow-lg border-t-4 border-alt-green mt-4 mr-4">
                     <img className="w-full bg-gray-200 object-cover" src={image} alt={name} loading="lazy" width="320" />
                     <div className="px-2 py-4">
                         <div className="flex flex-row items-center justify-between my-2">
