@@ -80,7 +80,7 @@ export const Navbar = () => {
     return (
         <div className="flex space-x-1 mr-6">
             {isAuthenticated ? (authMenu.map(({ key, name, route }) => (
-                <NavLink key={key} className="hover:underline" activeClassName="underline" to={route}>
+                <NavLink key={key} className="hover:underline" to={route}>
                     {name}
                 </NavLink>
             ))) : (defaultMenu.map(({ key, name, route }) => (
