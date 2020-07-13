@@ -34,7 +34,7 @@ export const Sidebar = ({ pageWrapId, outerContainerId }) => {
         {
             key: 1,
             name: 'Home',
-            route: '/',
+            route: '/home',
         },
         {
             key: 2,
@@ -67,7 +67,7 @@ export const Sidebar = ({ pageWrapId, outerContainerId }) => {
         {
             key: 1,
             name: 'Home',
-            route: '/',
+            route: '/home',
         },
         {
             key: 2,

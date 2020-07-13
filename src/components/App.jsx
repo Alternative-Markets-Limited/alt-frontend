@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     Switch,
     Route,
-    useLocation
+    useLocation,
+    Redirect
 } from 'react-router-dom';
 import { animated, useTransition } from 'react-spring';
 import {
@@ -77,7 +78,10 @@ const App = () => {
             {transitions.map(({ item, props, key }) => (
                 <animated.div key={key} style={props} className="absolute w-full">
                     <Switch location={item}>
-                        <Route exact path="/" component={HomePage} />
+                        <Route exact path="/">
+                            <Redirect to="/home" />
+                        </Route>
+                        <Route exact path="/home" component={HomePage} />
                         <Route exact path="/properties" component={PropertiesPage} />
                         <Route exact path="/reset-password/:token" component={ResetPasswordPage} />
                         <Route exact path="/about-us" component={AboutUsPage} />
