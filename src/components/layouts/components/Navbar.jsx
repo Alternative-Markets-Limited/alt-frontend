@@ -19,24 +19,20 @@ export const Navbar = () => {
         },
         {
             key: 3,
-            name: 'Login',
-            route: '/login',
-        },
-        {
-            key: 4,
-            name: 'Register',
-            route: '/register',
-        },
-        {
-            key: 5,
             name: 'About Us',
             route: '/about-us',
         },
         {
-            key: 6,
+            key: 4,
             name: 'Blog',
             route: '/blog',
         },
+        {
+            key: 5,
+            name: 'Login',
+            route: '/login',
+        },
+
     ];
 
     const authMenu = [
