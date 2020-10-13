@@ -19,23 +19,18 @@ export const Navbar = () => {
         },
         {
             key: 3,
-            name: 'Login',
-            route: '/login',
-        },
-        {
-            key: 4,
-            name: 'Register',
-            route: '/register',
-        },
-        {
-            key: 5,
             name: 'About Us',
             route: '/about-us',
         },
         {
-            key: 6,
+            key: 4,
             name: 'Blog',
             route: '/blog',
+        },
+        {
+            key: 5,
+            name: 'Login',
+            route: '/login',
         },
     ];
 
@@ -80,7 +75,7 @@ export const Navbar = () => {
     return (
         <div className="flex space-x-1 mr-6">
             {isAuthenticated ? (authMenu.map(({ key, name, route }) => (
-                <NavLink key={key} className="hover:underline" activeClassName="underline" to={route}>
+                <NavLink key={key} className="hover:underline" to={route}>
                     {name}
                 </NavLink>
             ))) : (defaultMenu.map(({ key, name, route }) => (
