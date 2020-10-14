@@ -18,7 +18,7 @@ export const KeyInformation = ({
         },
         {
             key: 3,
-            text: `₦${formatMoney(price)}`,
+            text: `₦${formatMoney(Number(price))}`,
             unit: 'per alts',
         },
         {

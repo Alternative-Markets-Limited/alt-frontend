@@ -59,7 +59,7 @@ export const PropertyCard = ({ properties }) => {
                                     </p>
                                 ) : (
                                     <p className="font-bold text-black text-xl">
-                                        { formatMoney(min_fraction_price) }
+                                        { formatMoney(Number(min_fraction_price)) }
                                         <span className="text-xs text-gray-600 font-normal"> /alt</span>
                                     </p>
                                 ) }
