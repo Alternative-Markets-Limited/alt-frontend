@@ -32,7 +32,6 @@ export const Navbar = () => {
             name: 'Login',
             route: '/login',
         },
-
     ];
 
     const authMenu = [
