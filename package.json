@@ -2,7 +2,7 @@
   "name": "alt-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://altappng.herokuapp.com/",
+  "homepage": "https://www.alt.ng/home",
   "dependencies": {
     "@ant-design/icons": "^4.0.3",
     "@contentful/rich-text-react-renderer": "^13.4.0",

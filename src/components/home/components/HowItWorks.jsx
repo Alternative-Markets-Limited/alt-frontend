@@ -8,7 +8,7 @@ import { Cards } from './Cards';
 const cards = [
     {
         alt: 'coin',
-        description: 'We value the cost of a property in our portfolio and divide into tokens (ALTs).',
+        description: 'We value the cost of a property in our portfolio and divide into ALTs.',
         image: coin,
         key: 1,
     },
@@ -27,7 +27,7 @@ const cards = [
     },
     {
         alt: 'hand',
-        description: 'Earn returns annually on your investment for the duration of your holding period.',
+        description: 'Earn returns monthly on your investment for the duration of your holding period.',
         image: hand,
         key: 4,
     },
