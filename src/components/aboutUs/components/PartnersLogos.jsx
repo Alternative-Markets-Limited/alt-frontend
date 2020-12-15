@@ -36,7 +36,7 @@ const logos = [
 ];
 
 export const PartnersLogos = () => (
-    <div className="flex flex-row overflow-x-auto scrolling-touch items-center justify-between">
+    <div className="flex flex-row overflow-x-auto scrolling-touch items-center justify-between w-11/12" style={{margin:'auto'}}>
         {logos.map(({
             alt, img, key, imgHover,
         }) => (
