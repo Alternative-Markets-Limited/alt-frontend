@@ -6,12 +6,12 @@ export const Logos = ({ img, imgHover, alt }) => (
         <img
             src={img}
             alt={alt}
-            className="h-full max-w-sm mx-8 transition-opacity duration-500 ease-in-out hover:opacity-0"
+            className="h-full max-w-sm mx-2 transition-opacity duration-500 ease-in-out hover:opacity-0"
         />
         <img
             src={imgHover}
             alt={alt}
-            className="transition-opacity duration-500 ease-in-out h-full max-w-sm mx-8 absolute inset-0 opacity-0 hover:opacity-100"
+            className="transition-opacity duration-500 ease-in-out h-full max-w-sm mx-2 absolute inset-0 opacity-0 hover:opacity-100"
         />
     </div>
 );
