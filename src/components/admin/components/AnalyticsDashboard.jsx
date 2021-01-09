@@ -71,6 +71,10 @@ export const AnalyticsDashboard = () => {
 
         },
         {
+            dataIndex: 'returns_frequency',
+            title: 'Returns Frequency',
+        },
+        {
             dataIndex: 'due_date',
             render: date => moment(date).format('DD-MM-YYYY'),
             title: 'Due Date',
@@ -94,7 +98,7 @@ export const AnalyticsDashboard = () => {
     ];
 
     const invoicesArray = pendingInvoice.map(({
-        created_at, property, price, status, due_date, id, invoice_number, fractions_qty, yield_period, user,
+        created_at, property, price, status, due_date, id, invoice_number, fractions_qty, yield_period, user, returns_frequency, 
     }) => ({
         created_at,
         due_date,
@@ -108,6 +112,7 @@ export const AnalyticsDashboard = () => {
         status,
         user_id: user.id,
         yield_period,
+        returns_frequency,
     }));
 
     const statsCards = [
