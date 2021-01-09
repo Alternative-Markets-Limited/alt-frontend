@@ -10,7 +10,7 @@ const { Option } = Select;
 
 export const OrderModal = ({
     visible, handleOk, handleCancel, onChange, price, tokens, totalAmount,
-    orders, id, yieldPeriod, onSelectChange, yieldValue, handleSubmit,
+    orders, id, yieldPeriod, onSelectChange, yieldValue, handleSubmit, onSelect, returns_frequency,
 }) => {
     const { loading } = useSelector(state => state.property);
 
@@ -43,6 +43,15 @@ export const OrderModal = ({
                         <Option key={key} value={key}>{`${key} Months (about ${value}% yield)`}</Option>
                     ))}
                 </Select>
+                <Select
+                    className="input-form w-full mb-3"
+                    placeholder="How frequently would you like your returns?"
+                    onChange={onSelect}
+                >
+                    <Option value="monthly">Monthly</Option>
+                    <Option value="quarterly">Quarterly</Option>
+                    <Option value="anually">Annually</Option>
+                </Select>
                 <div className="flex flex-row items-center justify-between w-full bg-gray-200 text-gray-900 p-4 rounded text-gray-900 font-medium">
                     <div className="flex flex-row">
                         <p className="mr-4">₦</p>
@@ -50,7 +59,7 @@ export const OrderModal = ({
                     </div>
                     <p>NGN</p>
                 </div>
-                {!!totalAmount && yieldValue && (
+                {!!totalAmount && yieldValue && returns_frequency && (
                     <Button onClick={handleSubmit} className="btn-primary w-full my-3 py-4 text-white hover:text-white" loading={loading}>
                         {loading ? 'Please Wait' : 'Purchase'}
                     </Button>

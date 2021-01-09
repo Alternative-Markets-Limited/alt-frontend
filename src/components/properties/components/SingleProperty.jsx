@@ -26,8 +26,8 @@ export const SingleProperty = () => {
     const { token } = useSelector(state => state.auth);
     const { property } = useSelector(state => state.property);
     const { orders } = useSelector(state => state.dashboard);
-    const [order, setOrder] = useState({ price: 0, quantity: 0, yieldValue: null });
-    const { price, quantity, yieldValue } = order;
+    const [order, setOrder] = useState({ price: 0, quantity: 0, yieldValue: null, returns_frequency: null });
+    const { price, quantity, yieldValue, returns_frequency } = order;
 
     useEffect(() => {
         dispatch(getProperty({ slug, token }));
@@ -73,12 +73,17 @@ export const SingleProperty = () => {
         setOrder({ ...order, yieldValue: parseFloat(value) });
     };
 
+    const onSelect = value => {
+        setOrder({ ...order, returns_frequency: value});
+    };
+
     const handleSubmit = () => {
         const newOrder = {
             fractions_qty: quantity,
             price,
             property_id: id,
             yield_period: yieldValue,
+            returns_frequency: returns_frequency,
         };
         return dispatch(createOrder({ history, newOrder, token }));
     };
@@ -106,6 +111,8 @@ export const SingleProperty = () => {
                     totalAmount={price}
                     onSelectChange={onSelectChange}
                     handleSubmit={handleSubmit}
+                    onSelect={onSelect}
+                    returns_frequency={returns_frequency}
                 />
                 <section>
                     <Hero name={name} image={image} category={category.name} min={min_yield} max={max_yield} tokens={investment_population} />
