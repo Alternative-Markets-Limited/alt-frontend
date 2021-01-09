@@ -5,8 +5,8 @@
  */
 
 export const formatMoney = amount => {
-    if (typeof (amount) === 'number') {
-        return amount.toLocaleString();
+    if (typeof(parseInt(amount)) === "number") {
+        return parseInt(amount).toLocaleString();
     }
     return 'Invalid Amount';
 };
