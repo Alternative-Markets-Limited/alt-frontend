@@ -115,7 +115,7 @@ export const SingleInvoice = () => {
                                 let totalAmount = 0;
                                 // eslint-disable-next-line no-shadow
                                 pageData.forEach(({ price }) => {
-                                    totalAmount += price;
+                                    totalAmount += parseInt(price);
                                 });
                                 return (
                                     <>
