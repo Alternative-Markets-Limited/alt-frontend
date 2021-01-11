@@ -26,7 +26,7 @@ export const AnalyticsDashboard = () => {
 
     if (!(orders && invoice && users)) return <Spinner />;
 
-    const pendingInvoice = invoice.filter(inv => !inv.status);
+    const pendingInvoice = invoice.filter(inv => parseInt(inv.status) === 0);
 
     const columns = [
         {

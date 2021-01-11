@@ -54,8 +54,8 @@ export const Invoices = () => {
             // eslint-disable-next-line react/display-name
             render: status => (
                 <span>
-                    <Badge status={status ? 'success' : 'error'} />
-                    {status ? 'Paid' : 'Unpaid'}
+                    <Badge status={parseInt(status) === 1 ? 'success' : 'error'} />
+                    {parseInt(status) === 1 ? 'Paid' : 'Unpaid'}
                 </span>
             ),
             title: 'Status',
