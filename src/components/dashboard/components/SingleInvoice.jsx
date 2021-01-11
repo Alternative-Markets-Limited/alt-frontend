@@ -81,13 +81,13 @@ export const SingleInvoice = () => {
                                     {`Invoice #${invoice_number}`}
                                 </h3>
                                 <p className="text-base font-normal">
-                                    <Badge status={status ? 'success' : 'error'} />
-                                    {status ? 'Paid' : 'Unpaid'}
+                                    <Badge status={parseInt(status) === 1 ? 'success' : 'error'} />
+                                    {parseInt(status) === 1 ? 'Paid' : 'Unpaid'}
                                 </p>
                             </div>
-                            {!status && <p>{`Due date: ${moment(due_date).format('dddd, MMMM Do YYYY')}`}</p>}
+                            {!parseInt(status) && <p>{`Due date: ${moment(due_date).format('dddd, MMMM Do YYYY')}`}</p>}
                         </div>
-                        {!status && (
+                        {!parseInt(status) && (
                             <div className="mb-8">
                                 <p className="text-base">
                                     Complete your payment to the account number below and send the evidence of payment with the invoice number to
