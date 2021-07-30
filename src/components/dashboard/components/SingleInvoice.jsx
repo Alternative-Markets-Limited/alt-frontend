@@ -27,7 +27,7 @@ export const SingleInvoice = () => {
     }
 
     const {
-        due_date, fractions_qty, invoice_number, price, property: { name }, status,
+        due_date, fractions_qty, invoice_number, price, property: { name }, status, returns_frequency
     } = invoice;
 
     const columns = [
@@ -137,6 +137,9 @@ export const SingleInvoice = () => {
                                 );
                             }}
                         />
+                        <p className="my-4 italic font-extrabold">
+                        * Returns are set to be received: "{returns_frequency.toUpperCase()}"
+                        </p>
                     </section>
                 </main>
             )}
